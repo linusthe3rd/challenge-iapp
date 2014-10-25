@@ -1,23 +1,19 @@
 require([
-    // 'knockout',
-    // 'lodash',
-    // 'jquery',
-    // 'bluebird',
+    'knockout',
 
-    // 'app/routes'
+    'app/appView',
+    'app/routes'
 ], function (
-    // ko,
-    // _,
-    // $,
-    // Promise
+    ko,
 
-    // routes
+    appView,
+    routes
 ) {
     'use strict';
 
     function startup() {
-        window.console.log("Starting App");
-        // routes.run();
+        ko.applyBindings(appView);
+        routes.run();
     }
 
     startup();

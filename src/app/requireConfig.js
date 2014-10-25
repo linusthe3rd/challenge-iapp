@@ -2,8 +2,6 @@
     'use strict';
 
     require.config({
-        // baseUrl: "",
-
         paths: {
             'bluebird': 'vendor/js/bluebird',
             'lodash':   'vendor/js/lodash',
