@@ -8,7 +8,7 @@ define([
     return function () {
         var self = this;
 
-        self.template = "test";
+        self.template = "app/settings/settings";
 
         self.taco = ko.observable("settings");
     };
