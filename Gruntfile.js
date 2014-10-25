@@ -51,6 +51,9 @@ module.exports = function (grunt) {
     // Task Definition
     // =========================================================
 
+    //
+    // Start local server to access files from localhost.
+    //
     grunt.registerTask('server', function() {
         grunt.task.run([
             'less:dev',
