@@ -10,9 +10,12 @@
     <body>
         <!-- ========== APP TAGS ========== -->
 
-        <!-- ko if: currentView -->
-            <div data-bind="template: { name: currentView().template, data: currentView }"></div>
-        <!-- /ko -->
+        <div data-bind="
+            template: {
+                name: 'app/appView',
+                data: $data
+            }
+        "></div>
 
         <!-- ========== SCRIPT TAGS ========== -->
 

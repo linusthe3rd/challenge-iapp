@@ -4,7 +4,8 @@ require([
     'app/appView',
     'app/routes',
 
-    'ko.amdHelpers',
+    // Dependencies that don't need an argument for the module
+    'ko.amdHelpers'
 ], function (
     ko,
 
@@ -14,10 +15,11 @@ require([
     'use strict';
 
     function startup() {
-        // Configure knockout's AMD plugin
+        // Configure knockout's AMD plugin to define where to look
+        // for external templates
         ko.amdTemplateEngine.defaultPath = "";
 
-        // Start App
+        // Start the app
         ko.applyBindings(appView);
         routes.run();
     }

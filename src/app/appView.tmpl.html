@@ -1,0 +1,42 @@
+<div class="app-header">
+    <span class="logo">
+        <a href="#">
+            <img src="assets/images/simplysocial-logo.png" alt="simplysocial" width="137px" height="25px">
+        </a>
+    </span>
+    <ul class="action-items list-inline">
+        <li class="action">
+            <button class="btn new-post-btn">
+                New Post
+            </button>
+        </li>
+        <li class="action">
+            <input type="text" class="search">
+        </li>
+        <li class="action">
+            <span class="dropdown">
+                <a href="#" class="avatar dropdown-toggle">
+                    A
+                </a>
+                <ul class="dropdown-menu list-inline" style="display:none">
+                    <li>
+                        Profile
+                    </li>
+                    <li>
+                        Followers
+                    </li>
+                    <li>
+                        Following
+                    </li>
+                    <li>
+                        <a href="#/settings">Settings</a>
+                    </li>
+                </ul>
+            </span>
+        </li>
+    </ul>
+</div>
+
+<!-- ko if: currentView -->
+    <div data-bind="template: { name: currentView().template, data: currentView }"></div>
+<!-- /ko -->
