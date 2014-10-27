@@ -1,18 +1,20 @@
 define([
     'knockout',
-    'jquery'
+    'jquery',
+    'lodash'
 ], function (
     ko,
-    $
+    $,
+    _
 ) {
     'use strict';
 
-    var EVENT_NAMESPACE = ".dropdown-event";
     var IS_OPEN_DOMDATA_KEY = "dropdown-isopen";
 
     ko.bindingHandlers.dropdown = {
         init: function (element) {
             var $dropdown = $(element);
+            var EVENT_NAMESPACE = _.uniqueId(".dropdown-event");
 
             // normally we would respond to an observable's value on a view model, but we don't need that
             // for the dropdown because we don't have a use case to control the open/close state from a
@@ -23,13 +25,20 @@ define([
 
             $dropdown.addClass('dropdown');
 
-            $dropdown.on('click' + EVENT_NAMESPACE, function () {
-                isOpen(!isOpen());
+            $('body').on('click' + EVENT_NAMESPACE, function (event) {
+                if ($(event.target).closest($dropdown).length === 0) {
+                    // Hide the dropdown if the user clicks anywhere outside of it
+                    isOpen(false);
+                } else {
+                    // If the user clicks anywhere within the dropdown element, toggle its
+                    // display
+                    isOpen(!isOpen());
+                }
             });
 
             //Clean up the binding handler when the element is removed from the DOM.
             ko.utils.domNodeDisposal.addDisposeCallback(element, function () {
-                $dropdown.off(EVENT_NAMESPACE);
+                $('body').off(EVENT_NAMESPACE);
             });
         },
 
@@ -38,9 +47,9 @@ define([
             var isOpen = ko.utils.domData.get(element, IS_OPEN_DOMDATA_KEY);
 
             if (isOpen()) {
-                $dropdown.addClass('open');
+                $dropdown.addClass('is-open');
             } else {
-                $dropdown.removeClass('open');
+                $dropdown.removeClass('is-open');
             }
         }
     };
