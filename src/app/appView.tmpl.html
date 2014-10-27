@@ -14,21 +14,29 @@
         <li class="action form search-action">
             <input type="text" class="form-control search-form-control">
         </li>
-        <li class="action">
-            <span class="dropdown">
-                <button class="btn avatar dropdown-toggle">
-                    <img src="assets/images/avatar-1.png">
+        <li class="action user-nav-action">
+            <span class="dropdown open">
+                <button class="btn dropdown-toggle">
+                    <span class="avatar">
+                        <img src="assets/images/avatar-1.png">
+                    </span>
+
+                    <span class="caret"></span>
                 </button>
-                <ul class="dropdown-menu" style="display:none">
+                <ul class="dropdown-menu">
+                    <li class="caret"></li>
                     <li>
-                        Profile
+                        <span>Profile</span>
                     </li>
+                    <li class="divider"></li>
                     <li>
-                        Followers
+                        <span>Followers</span>
                     </li>
+                    <li class="divider"></li>
                     <li>
-                        Following
+                        <span>Following</span>
                     </li>
+                    <li class="divider"></li>
                     <li>
                         <a href="#/settings">Settings</a>
                     </li>
