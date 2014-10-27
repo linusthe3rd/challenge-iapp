@@ -7,7 +7,8 @@ require([
     // Dependencies that don't need an argument for the module
     'ko.amdHelpers',
 
-    'components/dropdown/dropdown-binding'
+    'components/dropdown/dropdown-binding',
+    'components/modal/modal-binding'
 ], function (
     ko,
 
