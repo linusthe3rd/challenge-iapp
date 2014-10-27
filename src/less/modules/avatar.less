@@ -1,0 +1,43 @@
+/**
+ * A module to style avatar images. Adding the "avatar" class to the root node will lay out
+ * the child image tag accordingly.
+ *
+ * # Example
+ *
+ * <div class="avatar">
+ *     <img src="/path/to/image">
+ * </div>
+ *
+ * # Available Themes
+ *
+ * * avatar-lg - displays a larger avatar image
+ *
+ *      <div class="avatar avatar-lg">
+ *          <img src="/path/to/image">
+ *      </div>
+ *
+ */
+.avatar {
+    @image-dimensions-std: 30px;
+    @image-dimensions-lg: 85px;
+
+    background-color: white;
+    border-radius: @radius-std;
+    height: @image-dimensions-std;
+    overflow: hidden;
+    position: relative;
+    width:  @image-dimensions-std;
+
+    &.avatar-lg {
+        height: @image-dimensions-lg;
+        width:  @image-dimensions-lg;
+    }
+
+    img {
+        left: -5px;
+        max-width: 38px;
+        max-height: 53px;
+        position: absolute;
+        top: -5px;
+    }
+}

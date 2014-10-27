@@ -2,11 +2,17 @@ html {
     height: 100%;
     font-family: @ss-font-family-sans-serif;
     color: #70767f;
-    font-size: 17px;
+    font-size: @ss-font-size-std;
 }
 
 body {
     background-color: #fff;
     margin: 0;
     padding: 0;
+}
+
+a > img,
+button > img {
+    display: block; // ensure that interactive tags that wrap an image
+                    // are the same height as the image.
 }
