@@ -5,7 +5,9 @@ require([
     'app/routes',
 
     // Dependencies that don't need an argument for the module
-    'ko.amdHelpers'
+    'ko.amdHelpers',
+
+    'components/dropdown/dropdown-binding'
 ], function (
     ko,
 
