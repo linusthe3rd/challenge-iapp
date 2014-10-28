@@ -10,6 +10,9 @@ define([
 
         self.template = "app/settings/settings";
 
-        self.taco = ko.observable("settings");
+        self.isFavoriteNotificationOn = ko.observable(true);
+        self.isMentionNotificationOn = ko.observable(true);
+        self.isReplyNotificationOn = ko.observable(true);
+        self.isFollowNotificationOn = ko.observable(true);
     };
 });

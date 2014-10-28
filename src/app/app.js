@@ -8,6 +8,7 @@ require([
     'ko.amdHelpers',
 
     'components/dropdown/dropdown-binding',
+    'components/flipswitch/flipswitch-binding',
     'components/modal/modal-binding'
 ], function (
     ko,

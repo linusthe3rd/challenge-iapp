@@ -37,23 +37,19 @@
 
             <ul class="notification-options list-unstyled">
                 <li class="notification-item">
-                    <!-- ko template: 'components/flipswitch/flipswitch' -->
-                    <!-- /ko -->
+                    <div class="flipswitch" data-bind="flipswitch: isFavoriteNotificationOn"></div>
                     <span class="label">email me when my posts are marked as favorites</span>
                 </li>
                 <li class="notification-item">
-                    <!-- ko template: 'components/flipswitch/flipswitch' -->
-                    <!-- /ko -->
+                    <div class="flipswitch" data-bind="flipswitch: isMentionNotificationOn"></div>
                     <span class="label">email me when I'm mentioned</span>
                 </li>
                 <li class="notification-item">
-                    <!-- ko template: 'components/flipswitch/flipswitch' -->
-                    <!-- /ko -->
+                    <div class="flipswitch" data-bind="flipswitch: isReplyNotificationOn"></div>
                     <span class="label">email me when I get a reply</span>
                 </li>
                 <li class="notification-item">
-                    <!-- ko template: 'components/flipswitch/flipswitch' -->
-                    <!-- /ko -->
+                    <div class="flipswitch" data-bind="flipswitch: isFollowNotificationOn"></div>
                     <span class="label">email me when someone follows me</span>
                 </li>
             </ul>
