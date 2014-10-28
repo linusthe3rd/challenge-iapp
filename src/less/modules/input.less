@@ -1,0 +1,71 @@
+// ======================================================================================
+// # Checkbox and Radio Button Styles
+//
+// In order to utilize these styles, you need to add a child element to the label tag
+// that is attached to the provided input. This child element should have a "checkbox"
+// or "radio" class attached to it.
+//
+// ## Example
+//
+//      <!-- CHECKBOXES -->
+//      <input type="checkbox" name="my-checkbox" id="checkbox-1">
+//      <label for="checkbox-1">
+//          <div class="checkbox"></div>
+//          <span>My Label</span>
+//      </label>
+//
+//      <!-- RADIO BUTTONS -->
+//      <input type="radio" name="my-radio" id="radio-1">
+//      <label for="radio-1">
+//          <div class="radio"></div>
+//          <span>My Label</span>
+//      </label>
+//
+// ======================================================================================
+
+input[type="checkbox"],
+input[type="radio"] {
+    display: none; // hide the native buttons since they will be replaced
+
+    & + label {
+        cursor: pointer;
+    }
+
+    & + label .checkbox,
+    & + label .radio {
+        @container-size: 21px;
+
+        border: 1px solid #bec3cc;
+        border-radius: 50%;
+        display: inline-block;
+        height: @container-size;
+        margin-right: 25px;
+        position: relative;
+        vertical-align: middle;
+        width: @container-size;
+    }
+
+    & + label .checkbox::before,
+    & + label .radio::before {
+        // Add inner content to help render the checked state
+        content: "\00a0";
+    }
+
+    &:checked + label .checkbox:before,
+    &:checked + label .radio:before {
+        @content-size: 15px;
+
+        background-color: #00b286;
+        border-radius: 50%;
+        display: inline-block;
+        height: @content-size;
+        width:  @content-size;
+
+        // Absolutely center the content inside of its container
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -(@content-size/2);
+        margin-top:  -(@content-size/2);
+    }
+}
