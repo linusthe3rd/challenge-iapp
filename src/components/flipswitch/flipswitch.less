@@ -1,0 +1,141 @@
+.flipswitch {
+    height: 25px;
+    outline: none;
+    position: relative;
+    width: 50px;
+
+    .fs-state {
+        border-radius: 12.5px;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+    }
+
+    &:focus .fs-state {
+        box-shadow: 0 0 3px 3px #7dadd9;
+    }
+
+    .fs-state.fs-state-off {
+        background-color: #dee1e5;
+        .transform( scale(1, 1) );
+        .transform-origin(right);
+    }
+
+    .fs-state.fs-state-on {
+        background-color: #00b286;
+        .transform( scale(0, 1) );
+        .transform-origin(left);
+    }
+
+    .fs-btn {
+        background-color: #fff;
+        border-radius: 50%;
+        left: 1px;
+        height: 23px;
+        position: absolute;
+        top: 1px;
+        width: 23px;
+    }
+
+    &.is-on .fs-state-off {
+        .transform( scale(0, 1) );
+    }
+
+    &.is-on .fs-state-on {
+        .transform( scale(1, 1) );
+    }
+
+    &.is-on .fs-btn {
+        // Instead of using the "right" rule to do positioning
+        // the selectors below are used to help with animating the
+        // button's transition.
+        left: 100%;
+        margin-left: -24px;
+    }
+
+    // ========================================================================
+    // State Animations
+    // ========================================================================
+
+    .fs_state_animation (@name) {
+        .animation(@name 70ms ease-in-out 0s);
+    }
+
+    //
+    // Button Animation
+    //
+
+    &.is-animating .fs-btn {
+        .transition(all 70ms ease-in-out 0s);
+    }
+
+    //
+    // Background Animations - Off State
+    //
+
+    &.is-animating .fs-state-off {
+        .fs_state_animation(flipswitch_is_off_state_off);
+    }
+
+    &.is-animating .fs-state-on {
+        .fs_state_animation(flipswitch_is_off_state_on);
+    }
+
+    //
+    // Background Animations - On State
+    //
+
+    &.is-animating.is-on .fs-state-off {
+        .fs_state_animation(flipswitch_is_on_state_off);
+    }
+
+    &.is-animating.is-on .fs-state-on {
+        .fs_state_animation(flipswitch_is_on_state_on);
+    }
+}
+
+//
+// Off State Keyframes
+//
+
+.keyframes(flipswitch_is_off_state_off; {
+    from {
+        .transform( scale(0, 1) );
+    }
+    to {
+        .transform( scale(1, 1) );
+    }
+});
+
+.keyframes(flipswitch_is_off_state_on; {
+    from {
+        .transform( scale(1, 1) );
+    }
+    to {
+        .transform( scale(0, 1) );
+    }
+});
+
+//
+// On State Keyframes
+//
+
+.keyframes(flipswitch_is_on_state_off; {
+    from {
+        .transform( scale(1, 1) );
+    }
+    to {
+        .transform( scale(0, 1) );
+    }
+});
+
+.keyframes(flipswitch_is_on_state_on; {
+    from {
+        .transform( scale(0, 1) );
+    }
+    to {
+        .transform( scale(1, 1) );
+    }
+});

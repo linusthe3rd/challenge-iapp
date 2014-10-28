@@ -1,0 +1,40 @@
+.animation(@value) {
+  -webkit-animation: @value;
+     -moz-animation: @value;
+       -o-animation: @value;
+          animation: @value;
+}
+
+.keyframes(@name; @frames) {
+    @-webkit-keyframes @name {
+        @frames();
+    }
+
+    @-ms-keyframes @name {
+        @frames();
+    }
+
+    @keyframes @name {
+        @frames();
+    }
+}
+
+.transition(@value) {
+  -webkit-transition: @value;
+          transition: @value;
+}
+
+.transform(@transformation) {
+  -webkit-transform: @transformation;
+  -moz-transform: @transformation;
+  -ms-transform: @transformation;
+  transform: @transformation;
+}
+
+.transform-origin(@origin) {
+  -webkit-transform-origin: @origin;
+     -moz-transform-origin: @origin;
+      -ms-transform-origin: @origin;
+          transform-origin: @origin;
+}
+

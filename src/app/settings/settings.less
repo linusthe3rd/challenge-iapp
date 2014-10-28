@@ -18,14 +18,43 @@
 
     .settings-section {
         border-bottom: 1px solid #dee1e5;
-        padding-bottom: 50px;
         margin-bottom: 47px;
+        padding-bottom: 50px;
 
         &:last-child {
-            padding-bottom: 51px;
             margin-bottom: 50px;
+            padding-bottom: 51px;
         }
     }
+
+    //
+    // Notification Settings
+    //
+
+    .notification-item {
+        height: 25px;
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+    .notification-item:last-child {
+        margin-bottom: 0;
+    }
+
+    .notification-item .flipswitch {
+        display: inline-block;
+        margin-right: 24px;
+    }
+
+    .notification-item .label {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    //
+    // Privacy Settings
+    //
 
     .privacy-tags {
         margin-bottom: 25px;
