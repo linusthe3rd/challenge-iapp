@@ -29,16 +29,21 @@
     position: relative;
     width:  @image-dimensions-std;
 
-    &.avatar-lg {
-        height: @image-dimensions-lg;
-        width:  @image-dimensions-lg;
-    }
-
     img {
         left: -5px;
         max-width: 38px;
         max-height: 53px;
         position: absolute;
         top: -5px;
+    }
+
+    &.avatar-lg {
+        height: @image-dimensions-lg;
+        width:  @image-dimensions-lg;
+    }
+
+    &.avatar-lg img {
+        max-height: initial;
+        max-width: initial;
     }
 }
