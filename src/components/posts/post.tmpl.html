@@ -31,6 +31,11 @@
 
     <!-- ko if: hasMedia -->
         <div class="post-media">
+            <!-- ko if: data().media.type === 'video' -->
+                <!-- ko template: 'components/video-overlay/video-overlay' -->
+                <!-- /ko -->
+            <!-- /ko -->
+
             <img alt="" data-bind="
                 attr: {
                     src: data().media.source
