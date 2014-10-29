@@ -2,18 +2,25 @@
     <div class="media-object pull-left avatar">
         <img data-bind="
             attr: {
-                src: data().user.imageUri
+                src: postModel().data().user.imageUri
             }
         ">
     </div>
 
     <div class="media-body">
-        <h4 class="media-heading post-title" data-bind="text: data().user.name"></h4>
-        <div class="post-body" data-bind="html: htmlContent"></div>
+        <h4 class="media-heading post-title" data-bind="text: postModel().data().user.name"></h4>
+        <div class="post-body" data-bind="html: postModel().htmlContent"></div>
 
-        <!-- ko if: hasReplies -->
-        <button class="btn btn-link expand-btn">
-            <span>Expand</span>
+        <!-- ko if: postModel().hasReplies -->
+        <button class="btn btn-link expand-btn" data-bind="
+            click: toggleReplies,
+            css: {
+                'is-expanded': isDisplayingReplies
+            }
+        ">
+            <span data-bind="ifnot: isDisplayingReplies">Expand</span>
+            <span data-bind="if: isDisplayingReplies">Collapse</span>
+
             <span class="caret"></span>
         </button>
         <!-- /ko -->

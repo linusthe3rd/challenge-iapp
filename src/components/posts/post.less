@@ -7,18 +7,17 @@
     .post-content {
         border: 1px solid #dee1e5;
         border-radius: 4px;
-        width: 523px;
         padding-top: 25px;
         padding-right: 50px;
         position: relative;
+        width: 523px;
     }
 
     .post-content.is-displaying-extra-content,
     .post-content.is-displaying-replies {
         display: inline-block;
         border-bottom: none;
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
+        border-radius: 4px 4px 0 0;
     }
 
     //
@@ -27,7 +26,12 @@
 
     .media {
         margin-left: 25px;
+    }
 
+    .media-body {
+        // Account for the focus border of the expand/collaps button
+        margin-left: -5px;
+        padding-left: 5px;
     }
 
     .post-title {
@@ -48,8 +52,8 @@
     .expand-btn {
         color: #bec3cc;
         font-size: 13px;
-        margin-left: -1px;
         margin-bottom: 20px;
+        margin-left: -1px;
     }
 
     .expand-btn .caret {
@@ -57,6 +61,15 @@
         margin-left: 4px;
     }
 
+    .expand-btn.is-expanded .caret {
+        @caret-width: 7px;
+        @caret-height: 4px;
+
+        border-top: 0;
+        border-right: @caret-width/2 solid transparent;
+        border-bottom: @caret-height solid;
+        border-left: @caret-width/2 solid transparent;
+    }
 
     //
     // Post Actions
@@ -110,13 +123,13 @@
         border: 1px solid rgba(222, 225, 229, 0.5);
         border-left: 1px solid #dee1e5;
         border-right: 1px solid #dee1e5;
-        position: relative;
         padding-top: 26px;
+        position: relative;
     }
 
     .reply:last-child {
-        border-radius: 0 0 4px 4px;
         border-bottom: 1px solid #dee1e5;
+        border-radius: 0 0 4px 4px;
     }
 
     .reply .actions {
@@ -124,19 +137,19 @@
     }
 
     .reply-input {
-        padding-left: 25px;
         padding-bottom: 24px;
+        padding-left: 25px;
         padding-right: 23px;
     }
 
     .reply-field {
-        width: 100%;
-        display: block;
         background-color: white;
-        font-size: 16px;
         border: 1px solid #dee1e5;
-        padding: 0 14px;
         box-sizing: border-box;
+        display: block;
+        font-size: 16px;
+        padding: 0 14px;
+        width: 100%;
 
         .placeholder({
             color: #bec3cc;

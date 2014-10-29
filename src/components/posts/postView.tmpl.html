@@ -1,44 +1,43 @@
 <div class="post">
     <div class="post-content" data-bind="
         css: {
-            'is-displaying-extra-content': hasMedia,
-            'is-displaying-replies': hasReplies
+            'is-displaying-extra-content': postModel().hasMedia,
+            'is-displaying-replies': isDisplayingReplies
         }
     ">
         <!-- ko template: 'components/posts/post-content'-->
         <!-- /ko -->
     </div>
 
-
-    <!-- ko if: hasMedia -->
+    <!-- ko if: postModel().hasMedia -->
         <div class="post-media">
-            <!-- ko if: data().media.type === 'video' -->
+            <!-- ko if: postModel().data().media.type === 'video' -->
                 <!-- ko template: 'components/video-overlay/video-overlay' -->
                 <!-- /ko -->
             <!-- /ko -->
 
             <img alt="" data-bind="
                 attr: {
-                    src: data().media.source
+                    src: postModel().data().media.source
                 }
             ">
         </div>
     <!-- /ko -->
 
-    <!-- ko if: hasReplies -->
+    <!-- ko if: isDisplayingReplies -->
         <ul class="post-replies list-unstyled">
-            <!-- ko foreach: replyPosts() -->
+            <!-- ko foreach: replyPostViews() -->
             <li class="reply">
                 <!-- ko template: 'components/posts/post-content'-->
                 <!-- /ko -->
             </li>
             <!-- /ko -->
 
-            <!-- \ko if: isDisplayingNewReply -->
+            <!-- ko if: isDisplayingCreateNewReply -->
             <li class="reply reply-input form">
                 <input class="reply-field form-control" type="text" placeholder="Reply...">
             </li>
-            <!-- \/ko -->
+            <!-- /ko -->
         </ul>
     <!-- /ko -->
 </div>
