@@ -1,11 +1,23 @@
 .post {
-    border: 1px solid #dee1e5;
-    border-radius: 4px;
-    width: 523px;
-    padding: 25px 25px 0 25px;
-    position: relative;
+
+    .post-content {
+        border: 1px solid #dee1e5;
+        border-radius: 4px;
+        width: 523px;
+        padding-top: 25px;
+        padding-right: 50px;
+        position: relative;
+    }
+
+    .post-content.is-displaying-extra-content {
+        display: inline-block;
+        border-bottom: none;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
 
     .media {
+        margin-left: 25px;
         margin-bottom: 17px;
     }
 
@@ -37,5 +49,14 @@
 
     .actions .favorite {
         margin-right: 19px;
+    }
+
+    .post-media {
+        width: 100%
+    }
+
+    .post-media img {
+        display: block;
+        height: 315px;
     }
 }

@@ -1,16 +1,18 @@
 <div class="post">
-    <div class="media">
-        <div class="media-object pull-left avatar avatar-sm">
-            <img data-bind="
-                attr: {
-                    src: data().user.imageUri
-                }
-            ">
-        </div>
+    <div class="post-content" data-bind="css: {'is-displaying-extra-content': hasMedia}">
+        <div class="media">
+            <div class="media-object pull-left avatar avatar-sm">
+                <img data-bind="
+                    attr: {
+                        src: data().user.imageUri
+                    }
+                ">
+            </div>
 
-        <div class="media-body">
-            <h4 class="media-heading post-title" data-bind="text: data().user.name"></h4>
-            <span class="post-body" data-bind="html: htmlContent"></span>
+            <div class="media-body">
+                <h4 class="media-heading post-title" data-bind="text: data().user.name"></h4>
+                <span class="post-body" data-bind="html: htmlContent"></span>
+            </div>
         </div>
 
         <ul class="actions list-inline">
@@ -24,9 +26,16 @@
                 50m
             </li>
         </ul>
-
-        <!-- ko if: hasMedia -->
-        test
-        <!-- /ko -->
     </div>
+
+
+    <!-- ko if: hasMedia -->
+        <div class="post-media">
+            <img alt="" data-bind="
+                attr: {
+                    src: data().media.source
+                }
+            ">
+        </div>
+    <!-- /ko -->
 </div>

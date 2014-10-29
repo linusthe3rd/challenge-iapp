@@ -25,6 +25,7 @@ define([
 
             return htmlContent;
         });
+
         self.hasReplies = ko.computed(function () {
             return _.has(self.data(), "replies");
         });

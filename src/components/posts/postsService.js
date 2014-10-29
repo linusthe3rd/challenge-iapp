@@ -76,7 +76,7 @@ define([
             },
             media: {
                 type: "image",
-                source: "assets/images/avatar-1.png"
+                source: "assets/images/post-img-1.png"
             }
         },
 
@@ -128,7 +128,7 @@ define([
             },
             media: {
                 type: "video",
-                source: "assets/images/avatar-1.png"
+                source: "assets/images/post-img-1.png"
             }
         },
 
@@ -165,7 +165,7 @@ define([
             },
             media: {
                 type: "image",
-                source: "assets/images/avatar-1.png"
+                source: "assets/images/post-img-1.png"
             }
         },
 
@@ -185,7 +185,7 @@ define([
             },
             media: {
                 type: "video",
-                source: "assets/images/avatar-1.png"
+                source: "assets/images/post-img-1.png"
             }
         }
     ];
