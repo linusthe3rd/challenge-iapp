@@ -3,123 +3,153 @@
         <h1>Settings</h1>
     </div>
 
-    <div class="account-settings settings-section">
-        <div class="title">
-            <h2>ACCOUNT</h2>
-        </div>
-
-        <div class="profile-pic">
-            <div class="avatar avatar-lg">
-                <img src="assets/images/avatar-1.png">
+    <form data-bind="submit: saveSettings">
+        <div class="account-settings settings-section">
+            <div class="title">
+                <h2>ACCOUNT</h2>
             </div>
 
-            <button class="btn btn-default btn-small">
-                <span>Change</span>
-            </button>
+            <!-- ko ifnot: isLoading -->
+            <div class="profile-pic">
+                <div class="avatar avatar-lg">
+                    <img data-bind="
+                        attr: {
+                            src: user().imageUri
+                        }
+                    ">
+                </div>
+
+                <button class="btn btn-default btn-small">
+                    <span>Change</span>
+                </button>
+            </div>
+
+            <ul class="account-information list-unstyled form">
+                <li class="account-info-item">
+                    <input type="text" class="form-control" data-bind="value: user().name">
+                </li>
+                <li class="account-info-item">
+                    <input type="text" class="form-control" data-bind="value: user().email">
+                </li>
+                <li class="account-info-item">
+                    <input type="password" class="form-control" data-bind="value: user().password">
+                </li>
+            </ul>
+            <!-- /ko -->
         </div>
 
-        <ul class="account-information list-unstyled form">
-            <li class="account-info-item">
-                <input type="text" class="form-control">
-            </li>
-            <li class="account-info-item">
-                <input type="text" class="form-control">
-            </li>
-            <li class="account-info-item">
-                <input type="text" class="form-control">
-            </li>
-            <li class="account-info-item">
-                <input type="text" class="form-control">
-            </li>
-        </ul>
-    </div>
+        <div class="notifications-settings settings-section">
+            <div class="title">
+                <h2>NOTIFICATIONS</h2>
+            </div>
 
-    <div class="notifications-settings settings-section">
-        <div class="title">
-            <h2>NOTIFICATIONS</h2>
+            <!-- ko ifnot: isLoading -->
+            <ul class="notification-options list-unstyled">
+                <li class="notification-item">
+                    <div class="flipswitch" data-bind="flipswitch: settings().isFavoriteNotificationOn"></div>
+                    <span class="label">email me when my posts are marked as favorites</span>
+                </li>
+                <li class="notification-item">
+                    <div class="flipswitch" data-bind="flipswitch: settings().isMentionNotificationOn"></div>
+                    <span class="label">email me when I'm mentioned</span>
+                </li>
+                <li class="notification-item">
+                    <div class="flipswitch" data-bind="flipswitch: settings().isReplyNotificationOn"></div>
+                    <span class="label">email me when I get a reply</span>
+                </li>
+                <li class="notification-item">
+                    <div class="flipswitch" data-bind="flipswitch: settings().isFollowNotificationOn"></div>
+                    <span class="label">email me when someone follows me</span>
+                </li>
+            </ul>
+            <!-- /ko -->
         </div>
 
-        <ul class="notification-options list-unstyled">
-            <li class="notification-item">
-                <div class="flipswitch" data-bind="flipswitch: isFavoriteNotificationOn"></div>
-                <span class="label">email me when my posts are marked as favorites</span>
-            </li>
-            <li class="notification-item">
-                <div class="flipswitch" data-bind="flipswitch: isMentionNotificationOn"></div>
-                <span class="label">email me when I'm mentioned</span>
-            </li>
-            <li class="notification-item">
-                <div class="flipswitch" data-bind="flipswitch: isReplyNotificationOn"></div>
-                <span class="label">email me when I get a reply</span>
-            </li>
-            <li class="notification-item">
-                <div class="flipswitch" data-bind="flipswitch: isFollowNotificationOn"></div>
-                <span class="label">email me when someone follows me</span>
-            </li>
-        </ul>
-    </div>
+        <div class="privacy-settings settings-section">
+            <div class="title">
+                <h2>PRIVACY</h2>
+            </div>
 
-    <div class="privacy-settings settings-section">
-        <div class="title">
-            <h2>PRIVACY</h2>
+            <!-- ko ifnot: isLoading -->
+            <ul class="privacy-tags list-unstyled">
+                <li class="privacy-tags-option">
+                    <input type="radio"
+                           value="anyone"
+                           name="settings-privacy-tags"
+                           id="settings-privacy-tags-anyone"
+                           data-bind="checked: settings().whoCanTagMe">
+                    <label for="settings-privacy-tags-anyone">
+                        <div class="radio"></div>
+                        <span>allow anyone to tag me</span>
+                    </label>
+                </li>
+
+                <li class="privacy-tags-option">
+                    <input type="radio"
+                           value="followers"
+                           name="settings-privacy-tags"
+                           id="settings-privacy-tags-followers"
+                           data-bind="checked: settings().whoCanTagMe">
+                    <label for="settings-privacy-tags-followers">
+                        <div class="radio"></div>
+                        <span>only allow people I follow tag me</span>
+                    </label>
+                </li>
+
+                <li class="privacy-tags-option">
+                    <input type="radio"
+                           value="noone"
+                           name="settings-privacy-tags"
+                           id="settings-privacy-tags-noone"
+                           data-bind="checked: settings().whoCanTagMe">
+                    <label for="settings-privacy-tags-noone">
+                        <div class="radio"></div>
+                        <span>don't allow anyone to tag me</span>
+                    </label>
+                </li>
+            </ul>
+
+            <ul class="privacy-others list-unstyled">
+                <li class="settings-privacy-other">
+                    <input type="checkbox"
+                           name="settings-privacy-tags"
+                           id="settings-privacy-other-add-location"
+                           data-bind="checked: settings().addLocationToPosts">
+                    <label for="settings-privacy-other-add-location">
+                        <div class="checkbox"></div>
+                        <span>add a location to my posts</span>
+                    </label>
+                </li>
+
+                <li class="settings-privacy-other">
+                    <input type="checkbox"
+                           name="settings-privacy-tags"
+                           id="settings-privacy-other-find-email"
+                           data-bind="checked: settings().canFindByEmail">
+                    <label for="settings-privacy-other-find-email">
+                        <div class="checkbox"></div>
+                        <span>let others find me by me email address</span>
+                    </label>
+                </li>
+
+                <li class="settings-privacy-other">
+                    <input type="checkbox"
+                           name="settings-privacy-tags"
+                           id="settings-privacy-other-tailor-ads"
+                           data-bind="checked: settings().shouldDisplayPersonalAds">
+                    <label for="settings-privacy-other-tailor-ads">
+                        <div class="checkbox"></div>
+                        <span>tailor ads based on my information</span>
+                    </label>
+                </li>
+            </ul>
+            <!-- /ko -->
         </div>
 
-        <ul class="privacy-tags list-unstyled">
-            <li class="privacy-tags-option">
-                <input type="radio" name="settings-privacy-tags" id="settings-privacy-tags-anyone">
-                <label for="settings-privacy-tags-anyone">
-                    <div class="radio"></div>
-                    <span>allow anyone to tag me</span>
-                </label>
-            </li>
-
-            <li class="privacy-tags-option">
-                <input type="radio" name="settings-privacy-tags" id="settings-privacy-tags-followers">
-                <label for="settings-privacy-tags-followers">
-                    <div class="radio"></div>
-                    <span>only allow people I follow tag me</span>
-                </label>
-            </li>
-
-            <li class="privacy-tags-option">
-                <input type="radio" name="settings-privacy-tags" id="settings-privacy-tags-noone">
-                <label for="settings-privacy-tags-noone">
-                    <div class="radio"></div>
-                    <span>don't allow anyone to tag me</span>
-                </label>
-            </li>
-        </ul>
-
-        <ul class="privacy-others list-unstyled">
-            <li class="settings-privacy-other">
-                <input type="checkbox" name="settings-privacy-tags" id="settings-privacy-other-add-location">
-                <label for="settings-privacy-other-add-location">
-                    <div class="checkbox"></div>
-                    <span>add a location to my posts</span>
-                </label>
-            </li>
-
-            <li class="settings-privacy-other">
-                <input type="checkbox" name="settings-privacy-tags" id="settings-privacy-other-find-email">
-                <label for="settings-privacy-other-find-email">
-                    <div class="checkbox"></div>
-                    <span>let others find me by me email address</span>
-                </label>
-            </li>
-
-            <li class="settings-privacy-other">
-                <input type="checkbox" name="settings-privacy-tags" id="settings-privacy-other-tailor-ads">
-                <label for="settings-privacy-other-tailor-ads">
-                    <div class="checkbox"></div>
-                    <span>tailor ads based on my information</span>
-                </label>
-            </li>
-        </ul>
-    </div>
-
-    <button class="btn btn-primary save-settings-btn">
-        <span>Save Changes</span>
-    </button>
+        <button type="submit" class="btn btn-primary save-settings-btn" data-bind="disable: isSaving">
+            <span>Save Changes</span>
+        </button>
+    </form>
 </div>
 
 

@@ -20,7 +20,11 @@
             <span class="dropdown" data-bind="dropdown">
                 <button class="btn dropdown-toggle">
                     <span class="avatar">
-                        <img src="assets/images/avatar-1.png">
+                        <img data-bind="
+                            attr: {
+                                src: user().imageUri
+                            }
+                        ">
                     </span>
 
                     <span class="caret"></span>

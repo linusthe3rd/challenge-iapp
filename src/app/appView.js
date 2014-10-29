@@ -1,12 +1,18 @@
 define([
-    'knockout'
+    'knockout',
+
+    'components/user/userService'
 ], function (
-    ko
+    ko,
+
+    userService
 ) {
     'use strict';
 
     var AppView = function () {
         var self = this;
+
+        self.user = userService.currentUser;
 
         self.currentView = ko.observable();
     };
