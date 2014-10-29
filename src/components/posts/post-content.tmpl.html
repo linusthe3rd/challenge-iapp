@@ -1,0 +1,33 @@
+<div class="media">
+    <div class="media-object pull-left avatar">
+        <img data-bind="
+            attr: {
+                src: data().user.imageUri
+            }
+        ">
+    </div>
+
+    <div class="media-body">
+        <h4 class="media-heading post-title" data-bind="text: data().user.name"></h4>
+        <div class="post-body" data-bind="html: htmlContent"></div>
+
+        <!-- ko if: hasReplies -->
+        <button class="btn btn-link expand-btn">
+            <span>Expand</span>
+            <span class="caret"></span>
+        </button>
+        <!-- /ko -->
+    </div>
+</div>
+
+<ul class="actions list-inline">
+    <li class="reply-action">
+        x
+    </li>
+    <li class="favorite-action">
+        y
+    </li>
+    <li>
+        50m
+    </li>
+</ul>

@@ -33,6 +33,17 @@ define([
         self.hasMedia = ko.computed(function () {
             return _.has(self.data(), "media");
         });
+
+        self.replyPosts = ko.computed(function () {
+            if (self.hasReplies()) {
+                return _.map(self.data().replies, function (replyObj) {
+                    return new Post(replyObj);
+                });
+            }
+
+        });
+
+
     };
 
     return Post;

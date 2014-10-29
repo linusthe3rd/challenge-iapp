@@ -1,31 +1,12 @@
 <div class="post">
-    <div class="post-content" data-bind="css: {'is-displaying-extra-content': hasMedia}">
-        <div class="media">
-            <div class="media-object pull-left avatar avatar-sm">
-                <img data-bind="
-                    attr: {
-                        src: data().user.imageUri
-                    }
-                ">
-            </div>
-
-            <div class="media-body">
-                <h4 class="media-heading post-title" data-bind="text: data().user.name"></h4>
-                <span class="post-body" data-bind="html: htmlContent"></span>
-            </div>
-        </div>
-
-        <ul class="actions list-inline">
-            <li class="reply">
-                x
-            </li>
-            <li class="favorite">
-                y
-            </li>
-            <li>
-                50m
-            </li>
-        </ul>
+    <div class="post-content" data-bind="
+        css: {
+            'is-displaying-extra-content': hasMedia,
+            'is-displaying-replies': hasReplies
+        }
+    ">
+        <!-- ko template: 'components/posts/post-content'-->
+        <!-- /ko -->
     </div>
 
 
@@ -42,5 +23,22 @@
                 }
             ">
         </div>
+    <!-- /ko -->
+
+    <!-- ko if: hasReplies -->
+        <ul class="post-replies list-unstyled">
+            <!-- ko foreach: replyPosts() -->
+            <li class="reply">
+                <!-- ko template: 'components/posts/post-content'-->
+                <!-- /ko -->
+            </li>
+            <!-- /ko -->
+
+            <!-- \ko if: isDisplayingNewReply -->
+            <li class="reply reply-input form">
+                <input class="reply-field form-control" type="text" placeholder="Reply...">
+            </li>
+            <!-- \/ko -->
+        </ul>
     <!-- /ko -->
 </div>

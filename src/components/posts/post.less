@@ -1,5 +1,9 @@
 .post {
 
+    //
+    // Post Content
+    //
+
     .post-content {
         border: 1px solid #dee1e5;
         border-radius: 4px;
@@ -9,16 +13,21 @@
         position: relative;
     }
 
-    .post-content.is-displaying-extra-content {
+    .post-content.is-displaying-extra-content,
+    .post-content.is-displaying-replies {
         display: inline-block;
         border-bottom: none;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
     }
 
+    //
+    // Post Body
+    //
+
     .media {
         margin-left: 25px;
-        margin-bottom: 17px;
+
     }
 
     .post-title {
@@ -29,29 +38,52 @@
 
     .post-body {
         font-size: 16px;
+        margin-bottom: 17px;
     }
 
     .post-body a {
         color: #bec3cc;
     }
 
+    .expand-btn {
+        color: #bec3cc;
+        font-size: 13px;
+        margin-left: -1px;
+        margin-bottom: 20px;
+    }
+
+    .expand-btn .caret {
+        color: #bec3cc;
+        margin-left: 4px;
+    }
+
+
+    //
+    // Post Actions
+    //
+
     .actions {
         color: #bec3cc;
         font-size: 15.68px;
         position: absolute;
-        right: 24px;
+        right: 25px;
         top: 20px;
     }
 
-    .actions .reply {
+    .actions .reply-action {
         margin-right: 22px;
     }
 
-    .actions .favorite {
+    .actions .favorite-action {
         margin-right: 19px;
     }
 
+    //
+    // Post Media
+    //
+
     .post-media {
+        margin-top: -3px;
         position: relative;
         width: 100%
     }
@@ -63,5 +95,51 @@
     .post-media img {
         display: block;
         height: 315px;
+    }
+
+    //
+    // Replies
+    //
+
+    .post-replies {
+        margin-top: -3px;
+        position: relative;
+    }
+
+    .reply {
+        background-color: rgba(244, 245, 247, 0.5);
+        border: 1px solid rgba(222, 225, 229, 0.5);
+        border-left: 1px solid #dee1e5;
+        border-right: 1px solid #dee1e5;
+        padding-top: 26px;
+    }
+
+    .reply:last-child {
+        border-radius: 0 0 4px 4px;
+        border-bottom: 1px solid #dee1e5;
+    }
+
+    .reply .actions {
+        top: 26px;
+    }
+
+    .reply-input {
+        padding-left: 25px;
+        padding-bottom: 24px;
+        padding-right: 23px;
+    }
+
+    .reply-field {
+        width: 100%;
+        display: block;
+        background-color: white;
+        font-size: 16px;
+        border: 1px solid #dee1e5;
+        padding: 0 14px;
+        box-sizing: border-box;
+
+        .placeholder({
+            color: #bec3cc;
+        });
     }
 }
