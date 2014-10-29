@@ -22,3 +22,12 @@ button > img {
     display: block; // ensure that interactive tags that wrap an image
                     // are the same height as the image.
 }
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button {
+    // OS X Yosemite forces fonts to use "Helvetica Neue Desk Interface"
+    font-family: inherit;
+    -webkit-font-smoothing: inherit;
+}
