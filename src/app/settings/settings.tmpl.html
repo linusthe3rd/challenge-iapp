@@ -79,7 +79,7 @@
                            id="settings-privacy-tags-anyone"
                            data-bind="checked: settings().whoCanTagMe">
                     <label for="settings-privacy-tags-anyone">
-                        <div class="radio"></div>
+                        <div class="radio" tabindex="0"></div>
                         <span>allow anyone to tag me</span>
                     </label>
                 </li>
@@ -89,9 +89,10 @@
                            value="followers"
                            name="settings-privacy-tags"
                            id="settings-privacy-tags-followers"
+                           tabindex="0"
                            data-bind="checked: settings().whoCanTagMe">
                     <label for="settings-privacy-tags-followers">
-                        <div class="radio"></div>
+                        <div class="radio" tabindex="0"></div>
                         <span>only allow people I follow tag me</span>
                     </label>
                 </li>
@@ -101,9 +102,10 @@
                            value="noone"
                            name="settings-privacy-tags"
                            id="settings-privacy-tags-noone"
+                           tabindex="0"
                            data-bind="checked: settings().whoCanTagMe">
                     <label for="settings-privacy-tags-noone">
-                        <div class="radio"></div>
+                        <div class="radio" tabindex="0"></div>
                         <span>don't allow anyone to tag me</span>
                     </label>
                 </li>
@@ -114,9 +116,10 @@
                     <input type="checkbox"
                            name="settings-privacy-tags"
                            id="settings-privacy-other-add-location"
+                           tabindex="0"
                            data-bind="checked: settings().addLocationToPosts">
                     <label for="settings-privacy-other-add-location">
-                        <div class="checkbox"></div>
+                        <div class="checkbox" tabindex="0"></div>
                         <span>add a location to my posts</span>
                     </label>
                 </li>
@@ -125,9 +128,10 @@
                     <input type="checkbox"
                            name="settings-privacy-tags"
                            id="settings-privacy-other-find-email"
+                           tabindex="0"
                            data-bind="checked: settings().canFindByEmail">
                     <label for="settings-privacy-other-find-email">
-                        <div class="checkbox"></div>
+                        <div class="checkbox" tabindex="0"></div>
                         <span>let others find me by me email address</span>
                     </label>
                 </li>
@@ -136,9 +140,10 @@
                     <input type="checkbox"
                            name="settings-privacy-tags"
                            id="settings-privacy-other-tailor-ads"
+                           tabindex="0"
                            data-bind="checked: settings().shouldDisplayPersonalAds">
                     <label for="settings-privacy-other-tailor-ads">
-                        <div class="checkbox"></div>
+                        <div class="checkbox" tabindex="0"></div>
                         <span>tailor ads based on my information</span>
                     </label>
                 </li>

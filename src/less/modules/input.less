@@ -45,6 +45,12 @@ input[type="radio"] {
         width: @container-size;
     }
 
+    & + label .checkbox:focus,
+    & + label .radio:focus {
+        outline: none;
+        box-shadow: 0 0 3px 3px #7dadd9;
+    }
+
     & + label .checkbox::before,
     & + label .radio::before {
         // Add inner content to help render the checked state
@@ -65,7 +71,10 @@ input[type="radio"] {
         position: absolute;
         top: 50%;
         left: 50%;
-        margin-left: -(@content-size/2);
-        margin-top:  -(@content-size/2);
+        .transform(translateX(-50%) translateY(-50%));
+        // margin-left: -(@content-size/2);
+        // margin-top:  -(@content-size/2);
     }
+
+
 }
