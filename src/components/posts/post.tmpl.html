@@ -1,0 +1,28 @@
+<div class="post">
+    <div class="media">
+        <div class="media-object pull-left avatar avatar-sm">
+            <img data-bind="
+                attr: {
+                    src: user.imageUri
+                }
+            ">
+        </div>
+
+        <div class="media-body">
+            <h4 class="media-heading post-title" data-bind="text: user.name"></h4>
+            <span class="post-body" data-bind="text: content.body"></span>
+        </div>
+
+        <ul class="actions list-inline">
+            <li class="reply">
+                x
+            </li>
+            <li class="favorite">
+                y
+            </li>
+            <li>
+                50m
+            </li>
+        </ul>
+    </div>
+</div>

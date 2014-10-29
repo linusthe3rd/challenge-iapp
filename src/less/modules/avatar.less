@@ -18,8 +18,9 @@
  *
  */
 .avatar {
-    @image-dimensions-std: 30px;
-    @image-dimensions-lg: 85px;
+    @image-dimensions-sm:  30px;
+    @image-dimensions-std: 40px;
+    @image-dimensions-lg:  85px;
 
     background-color: white;
     border-radius: @radius-std;
@@ -35,6 +36,16 @@
         max-height: 53px;
         position: absolute;
         top: -5px;
+    }
+
+    &.avatar-sm {
+        height: @image-dimensions-sm;
+        width:  @image-dimensions-sm;
+    }
+
+    &.avatar-sm img {
+        // max-height: @image-dimensions-sm;
+        // max-width:  @image-dimensions-sm;
     }
 
     &.avatar-lg {
