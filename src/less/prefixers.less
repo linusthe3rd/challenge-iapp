@@ -19,6 +19,24 @@
     }
 }
 
+.placeholder(@styles) {
+  &.placholder {
+    // This class is added in by the jquery.placeholder jQuery plugin. It will
+    // add the placeholder class to elements that require the polyfill on older browsers.
+    @styles();
+  }
+
+  &:-moz-placeholder {
+    @styles();
+  }
+  &:-ms-input-placeholder {
+    @styles();
+  }
+  &::-webkit-input-placeholder {
+    @styles();
+  }
+}
+
 .transition(@value) {
   -webkit-transition: @value;
           transition: @value;

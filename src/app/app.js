@@ -9,7 +9,8 @@ require([
 
     'components/dropdown/dropdown-binding',
     'components/flipswitch/flipswitch-binding',
-    'components/modal/modal-binding'
+    'components/modal/modal-binding',
+    'components/placeholder/placeholder-binding',
 ], function (
     ko,
 
