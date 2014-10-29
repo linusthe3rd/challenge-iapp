@@ -1,8 +1,6 @@
 define([
     'knockout',
-    'jquery',
-
-    'vendor/js/blur'
+    'jquery'
 ], function (
     ko,
     $
