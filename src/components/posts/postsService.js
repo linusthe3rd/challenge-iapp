@@ -1,11 +1,15 @@
 define([
     'knockout',
     'lodash',
-    'bluebird'
+    'bluebird',
+
+    'components/posts/Post'
 ], function (
     ko,
     _,
-    Promise
+    Promise,
+
+    Post
 ) {
     'use strict';
 
@@ -186,13 +190,17 @@ define([
         }
     ];
 
+    var postMockModelsCollection = _.map(posts, function (obj) {
+        return new Post(obj);
+    });
+
     var settingsService = {
         getPosts: function () {
-            return Promise.resolve(posts);
+            return Promise.resolve(postMockModelsCollection);
         },
 
         createPost: function (newPost) {
-            posts.unshift(newPost);
+            postMockModelsCollection.unshift(new Post(newPost));
             return Promise.resolve();
         }
     };

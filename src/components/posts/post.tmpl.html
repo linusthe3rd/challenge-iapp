@@ -3,14 +3,14 @@
         <div class="media-object pull-left avatar avatar-sm">
             <img data-bind="
                 attr: {
-                    src: user.imageUri
+                    src: data().user.imageUri
                 }
             ">
         </div>
 
         <div class="media-body">
-            <h4 class="media-heading post-title" data-bind="text: user.name"></h4>
-            <span class="post-body" data-bind="text: content.body"></span>
+            <h4 class="media-heading post-title" data-bind="text: data().user.name"></h4>
+            <span class="post-body" data-bind="html: htmlContent"></span>
         </div>
 
         <ul class="actions list-inline">
@@ -24,5 +24,9 @@
                 50m
             </li>
         </ul>
+
+        <!-- ko if: hasMedia -->
+        test
+        <!-- /ko -->
     </div>
 </div>
