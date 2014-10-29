@@ -1,6 +1,5 @@
 <div class="home-page">
     <div class="home-header">
-
         <div class="new-post form">
             <textarea placeholder="What's on your mind?" class="form-control new-post-input"></textarea>
 
@@ -17,6 +16,41 @@
                 </li>
             </ul>
         </div>
+
+        <div class="subnav-container">
+            <ul class="nav nav-tabs">
+                <li data-bind="
+                    css: {
+                        'active': selectedFilter() === 'all'
+                    }
+                ">
+                    <button class="btn btn-link" data-bind="click: displayAllPosts">
+                        <span>ALL POSTS</span>
+                    </button>
+                </li>
+
+                <li data-bind="
+                    css: {
+                        'active': selectedFilter() === 'photos'
+                    }
+                ">
+                    <button class="btn btn-link" data-bind="click: displayPhotoPosts">
+                        <span>PHOTOS</span>
+                    </button>
+                </li>
+
+                <li data-bind="
+                    css: {
+                        'active': selectedFilter() === 'videos'
+                    }
+                ">
+                    <button class="btn btn-link" data-bind="click: displayVideoPosts">
+                        <span>VIDEOS</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+
 
     </div>
 
