@@ -1,0 +1,26 @@
+<div class="media-detail-post">
+    <div class="post-media">
+        <img alt="" data-bind="
+            attr: {
+                src: postModel().data().media.source
+            }
+        ">
+    </div>
+
+    <div class="post-content">
+        <!-- ko template: 'components/posts/post-content'-->
+        <!-- /ko -->
+
+        <!-- ko template: 'components/posts/post-actions'-->
+        <!-- /ko -->
+
+        <div class="reply reply-input form" data-bind="
+            masonryReload: {
+                observable: isDisplayingCreateNewReply,
+                parentSelector: '.posts-list'
+            }
+        ">
+            <input class="reply-field form-control" type="text" placeholder="Reply...">
+        </div>
+    </div>
+</div>

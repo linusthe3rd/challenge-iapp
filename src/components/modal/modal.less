@@ -7,16 +7,15 @@
     left: 0;
     background: rgba(0,0,0,0.8);;
     z-index: 9000;
+    text-align: center;
 
     .modal-window {
-        width: 525px;
-        position: relative;
-        margin: 0 auto;
-        background-color: #dee1e5;
-        height: 174px;
         border-radius: 3px;
-        top: 184px;
-        padding: 24px 26px 17px 24px;
+        display: inline-block;
+        left: 50%;
+        position: absolute;
+        top: 25%;
+        transform: translateX(-50%);
     }
 
     .modal-close-btn {
@@ -29,6 +28,10 @@
         position: absolute;
         top:   -(@btn-size + 2px);;
         right: -(@btn-size + 7px);
+    }
+
+    .modal-content {
+        text-align: left;
     }
 }
 

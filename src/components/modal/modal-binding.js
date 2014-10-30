@@ -1,8 +1,10 @@
 define([
     'knockout',
+    'lodash',
     'jquery'
 ], function (
     ko,
+    _,
     $
 ) {
     'use strict';
@@ -35,6 +37,15 @@ define([
             var $element = $(element);
             var bindingData = ko.unwrap(valueAccessor());
 
+            var templateData = bindingData;
+
+            if (_.isString(bindingData)) {
+                templateData = {
+                    name: bindingData,
+                    data: bindingContext.$data
+                };
+            }
+
             //
             // Render the modal window
             //
@@ -51,20 +62,21 @@ define([
             //
             // https://github.com/rniemeyer/knockout-amd-helpers/issues/26
             //
-            define('components/modal/ModalBindingViewModel', [], function () {
+            var moduleName = _.uniqueId('components/modal/ModalBindingViewModel');
+            define(moduleName, [], function () {
                 return {
                     closeModal: function () {
                         $element.removeClass(IS_MODAL_SHOWN_STATE_CLASS);
                     },
-                    contentTemplate: bindingData
+                    contentTemplate: templateData
                 };
             });
 
             // The valueAccessor argument needs to be a function in order to work w/ calling other bindings.
             var modalViewModelAccessor = function () {
                 return {
-                    name: 'components/modal/ModalBindingViewModel',
-                    template: 'components/modal/modal'
+                    name: moduleName,
+                    template: 'components/modal/modal',
                 };
             };
 
@@ -75,6 +87,8 @@ define([
             //
 
             $element.on('click' + EVENT_NAMESPACE, function (event) {
+                // event.preventDefault();
+
                 if (!$element.hasClass(IS_MODAL_SHOWN_STATE_CLASS) &&
                     $(event.target).closest(".modal-toggle").length > 0)
                 {
