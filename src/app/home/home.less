@@ -47,15 +47,60 @@
     // Sub Navigation
     //
 
-    .subnav-container {
+    .subnav {
         bottom: 0;
         position: absolute;
         width: 100%;
     }
 
-    .subnav-container .nav {
+    .subnav .subnav-container {
         margin: 0 auto;
         width: 575px;
+    }
+
+    .nav {
+        display: inline;
+    }
+
+
+    //
+    // Layout Selection
+    //
+
+    .layout-tabs {
+        display: inline-block;
+        float: right;
+        margin-right: -3px;
+    }
+
+    .layout-tab {
+        margin-right: 15px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    .layout-tab .btn {
+        background-size: 9px;
+        height: 9px;
+        width: 9px;
+    }
+
+    .layout-tabs .list-layout-btn {
+        background-image: url("assets/images/list.png");
+    }
+
+    .layout-tabs .list-layout-btn.is-selected {
+        background-image: url("assets/images/list-light.png");
+    }
+
+    .layout-tabs .grid-layout-btn {
+        background-image: url("assets/images/tile.png");
+    }
+
+    .layout-tabs .grid-layout-btn.is-selected {
+        background-image: url("assets/images/tile-light.png");
     }
 
     //

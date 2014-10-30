@@ -41,16 +41,22 @@ define([
 
         self.displayAllPosts = function () {
             self.selectedFilter("all");
-            self.selectedLayout("l-list");
         };
 
         self.displayPhotoPosts = function () {
             self.selectedFilter("photos");
-            self.selectedLayout("l-grid");
         };
 
         self.displayVideoPosts = function () {
             self.selectedFilter("videos");
+        };
+
+        self.displayListLayout = function () {
+            self.selectedLayout("l-list");
+        };
+
+        self.displayGridLayout = function () {
+            self.selectedLayout("l-grid");
         };
 
         // ===============================================================================
