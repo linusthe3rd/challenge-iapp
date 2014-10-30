@@ -13,7 +13,16 @@ define([
         id:       "1",
         name:     ko.observable("Jessica Tuan"),
         email:    ko.observable("jessica@mail.com"),
-        imageUri: ko.observable("assets/images/avatar-1.png"),
+        images: ko.observable({
+            small: {
+                imageUri: "assets/images/avatars/avatar-1.png",
+                width: "38px",
+                position: {
+                    x: "-5px",
+                    y: "-4px"
+                }
+            }
+        }),
         password: ko.observable("chalupa batman")
     };
 

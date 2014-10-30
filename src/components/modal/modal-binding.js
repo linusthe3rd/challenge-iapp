@@ -87,8 +87,6 @@ define([
             //
 
             $element.on('click' + EVENT_NAMESPACE, function (event) {
-                // event.preventDefault();
-
                 if (!$element.hasClass(IS_MODAL_SHOWN_STATE_CLASS) &&
                     $(event.target).closest(".modal-toggle").length > 0)
                 {

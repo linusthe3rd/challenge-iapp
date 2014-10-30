@@ -75,6 +75,54 @@ input[type="radio"] {
         // margin-left: -(@content-size/2);
         // margin-top:  -(@content-size/2);
     }
+}
 
+.input-group {
+    border-collapse: separate;
+    display: table;
+    position: relative;
 
+    .form-control {
+        display: table-cell;
+
+        &:first-child {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            border-right: none;
+            padding-right: 0;
+        }
+
+        &:last-child {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border-left: none;
+            padding-left: 0;
+        }
+    }
+
+    .input-group-addon {
+        padding: 0px 12px;
+        color: #bec3cc;
+        font-size: 13px;
+        line-height: 1;
+        text-align: center;
+        border: 1px solid #bec3cc;
+        border-radius: @radius-std;
+        widows: 1%;
+        white-space: nowrap;
+        vertical-align: middle;
+        display: table-cell;
+
+        &:first-child {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            border-right: none;
+        }
+
+        &:last-child {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border-left: none;
+        }
+    }
 }
