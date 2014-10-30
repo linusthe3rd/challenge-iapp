@@ -1,6 +1,9 @@
 <div class="modal">
     <div class="modal-window">
-        <button class="btn modal-close-btn" data-bind="click: closeModal"></button>
+        <button class="btn modal-close-btn" type="button" data-bind="click: closeModal">
+            <a href="javascript:void(0);" class="object-btn" data-bind="click: closeModal" tabindex="-1"></a>
+            <object type="image/svg+xml" data="assets/svg/close.svg"></object>
+        </button>
         <div class="modal-content" data-bind="template: contentTemplate"></div>
     </div>
 </div>

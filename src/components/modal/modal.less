@@ -18,17 +18,22 @@
         .transform(translateX(-50%));
     }
 
-    .modal-close-btn {
-        @btn-size: 21px;
+    @btn-size: 21px;
 
-        border: 1px solid #70767f;
-        border-radius: 50%;
+    .modal-close-btn {
         width:  @btn-size;
         height: @btn-size;
         position: absolute;
         top:   -(@btn-size + 2px);;
         right: -(@btn-size + 7px);
     }
+
+    .modal-close-btn .object-btn {
+        width:  @btn-size;
+        height: @btn-size;
+    }
+
+
 
     .modal-content {
         text-align: left;
