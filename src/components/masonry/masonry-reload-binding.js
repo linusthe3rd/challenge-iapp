@@ -7,6 +7,7 @@ define([
 ) {
     'use strict';
 
+    var L_GRID_CLASS = ".l-grid";
     var DOM_DATA_KEY = "masonry-binding-instance";
 
     var getMasonryInstance = function (element) {
@@ -27,10 +28,8 @@ define([
      */
     ko.bindingHandlers.masonryReload = {
         init: function (element, valueAccessor) {
-            var bindingData = ko.unwrap(valueAccessor());
-            ko.unwrap(bindingData.observable);
-            var parentSelector = ko.unwrap(bindingData.parentSelector);
-            var $parentNode = $(element).closest(parentSelector);
+            ko.unwrap(valueAccessor());
+            var $parentNode = $(element).closest(L_GRID_CLASS);
 
             ko.utils.domNodeDisposal.addDisposeCallback(element, function () {
                 setTimeout(function () {
@@ -43,10 +42,8 @@ define([
             });
         },
         update: function (element, valueAccessor) {
-            var bindingData = ko.unwrap(valueAccessor());
-            ko.unwrap(bindingData.observable);
-            var parentSelector = ko.unwrap(bindingData.parentSelector);
-            var $parentNode = $(element).closest(parentSelector);
+            ko.unwrap(valueAccessor());
+            var $parentNode = $(element).closest(L_GRID_CLASS);
 
             if ($parentNode.length === 0) {
                 return;
