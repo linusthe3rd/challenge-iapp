@@ -52,7 +52,12 @@
         <!-- /ko -->
 
         <!-- ko if: isDisplayingCreateNewReply -->
-        <li class="reply reply-input form">
+        <li class="reply reply-input form" data-bind="
+            masonryReload: {
+                observable: isDisplayingCreateNewReply,
+                parentSelector: '.posts-list'
+            }
+        ">
             <input class="reply-field form-control" type="text" placeholder="Reply...">
         </li>
         <!-- /ko -->

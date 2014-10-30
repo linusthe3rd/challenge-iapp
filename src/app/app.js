@@ -10,6 +10,7 @@ require([
     'components/dropdown/dropdown-binding',
     'components/flipswitch/flipswitch-binding',
     'components/masonry/masonry-binding',
+    'components/masonry/masonry-reload-binding',
     'components/modal/modal-binding',
     'components/placeholder/placeholder-binding',
 ], function (

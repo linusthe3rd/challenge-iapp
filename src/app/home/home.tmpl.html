@@ -58,8 +58,11 @@
             css: selectedLayout,
             foreach: postViews,
             masonry: {
-                itemSelector: '.post',
-                isActive: isGridLayout
+                isActive: isGridLayout,
+                options: {
+                    itemSelector: '.post',
+                    gutter: 25
+                }
             }
         ">
             <li class="post" data-bind="

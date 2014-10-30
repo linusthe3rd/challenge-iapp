@@ -37,7 +37,10 @@ define([
      */
     ko.bindingHandlers.masonry = {
         init: function (element) {
+            //
             // Clean up
+            //
+
             ko.utils.domNodeDisposal.addDisposeCallback(element, function () {
                 destroyMasonryInstance(element);
             });
@@ -45,7 +48,7 @@ define([
         update: function (element, valueAccessor) {
             var bindingData = ko.unwrap(valueAccessor());
             var isActive = ko.unwrap(bindingData.isActive);
-            var itemSelector = ko.unwrap(bindingData.itemSelector);
+            var options = ko.unwrap(bindingData.options);
 
             if (isActive) {
                 $(element).addClass(GRID_LAYOUT_CLASS);
@@ -53,11 +56,7 @@ define([
                 var existingMasonryInstance = getMasonryInstance(element);
 
                 if (!existingMasonryInstance) {
-                    var newMasonry = new Masonry(element, {
-                        itemSelector: itemSelector,
-                        gutter: 25,
-                        isFixWidth: true
-                    });
+                    var newMasonry = new Masonry(element, options);
 
                     saveMasonryInstance(element, newMasonry);
                 }
