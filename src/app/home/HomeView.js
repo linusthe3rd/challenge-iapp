@@ -31,16 +31,22 @@ define([
 
         self.postViews = ko.observableArray();
 
+        self.isGridLayout = ko.computed(function () {
+            return self.selectedLayout() === "l-grid";
+        });
+
         // ===============================================================================
         // Event Callbacks
         // ===============================================================================
 
         self.displayAllPosts = function () {
             self.selectedFilter("all");
+            self.selectedLayout("l-list");
         };
 
         self.displayPhotoPosts = function () {
             self.selectedFilter("photos");
+            self.selectedLayout("l-grid");
         };
 
         self.displayVideoPosts = function () {

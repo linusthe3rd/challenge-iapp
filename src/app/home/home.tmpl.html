@@ -52,13 +52,23 @@
         </div>
     </div>
 
+    <!-- css:             masonry: {
+                itemSelector: '.post-item',
+                isActive: isGridLayout
+            } -->
+
     <!-- ko ifnot: isLoading -->
     <div class="posts-container">
         <ul class="posts-list list-unstyled" data-bind="
             css: selectedLayout,
             foreach: postViews
         ">
-            <li class="post-item" data-bind="template: 'components/posts/postView'"></li>
+            <li class="post" data-bind="
+                css: {
+                    'post-sm': $parent.isGridLayout
+                },
+                template: 'components/posts/postView'
+            "></li>
         </ul>
     </div>
 
