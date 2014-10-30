@@ -21,6 +21,14 @@ define([
                     x: "-5px",
                     y: "-4px"
                 }
+            },
+            large: {
+                imageUri: "assets/images/avatars/avatar-1.png",
+                width: "95px",
+                position: {
+                    x: "-6px",
+                    y: "-5px"
+                }
             }
         }),
         password: ko.observable("chalupa batman")

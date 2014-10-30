@@ -12,14 +12,20 @@
             <!-- ko ifnot: isLoading -->
             <div class="profile-pic">
                 <div class="avatar avatar-lg">
+
                     <img data-bind="
                         attr: {
-                            src: user().imageUri
+                            src: user().images().large.imageUri
+                        },
+                        style: {
+                            left: user().images().large.position.x,
+                            width: user().images().large.width,
+                            top: user().images().large.position.y
                         }
                     ">
                 </div>
 
-                <button class="btn btn-default btn-small">
+                <button class="btn btn-default btn-small" type="button">
                     <span>Change</span>
                 </button>
             </div>
