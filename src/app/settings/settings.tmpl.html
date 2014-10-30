@@ -25,14 +25,33 @@
             </div>
 
             <ul class="account-information list-unstyled form">
-                <li class="account-info-item">
-                    <input type="text" class="form-control" data-bind="value: user().name">
+                <li class="account-info-item account-info-name">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <object type="image/svg+xml" data="assets/svg/user.svg" class="logo"></object>
+                        </span>
+                        <input type="text" class="form-control" data-bind="value: user().name">
+                    </div>
+
                 </li>
-                <li class="account-info-item">
-                    <input type="text" class="form-control" data-bind="value: user().email">
+                <li class="account-info-item account-info-email">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <object type="image/svg+xml" data="assets/svg/mail.svg" class="logo"></object>
+                        </span>
+                        <input type="text" class="form-control" data-bind="value: user().email">
+                    </div>
+
                 </li>
-                <li class="account-info-item">
-                    <input type="password" class="form-control" data-bind="value: user().password">
+                <li class="account-info-item account-info-password">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <img src="assets/images/lock.png" alt="">
+                        </span>
+                        <input type="password" class="form-control" data-bind="value: user().password">
+                        <span class="input-group-addon">change</span>
+                    </div>
+
                 </li>
             </ul>
             <!-- /ko -->
