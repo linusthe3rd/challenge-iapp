@@ -74,10 +74,14 @@
 
     .actions {
         color: #bec3cc;
-        font-size: 15.68px;
+        font-size: 16px;
         position: absolute;
         right: 25px;
         top: 20px;
+    }
+
+    .actions object {
+        height: 13px;
     }
 
     .actions .reply-action {
@@ -98,13 +102,24 @@
         width: 100%
     }
 
-    .post-media .video-overlay {
+    .post-media .media-btn {
+        width: 100%;
+    }
+
+    .post-media .post-media-wrapper {
+        height: 315px;
+        position: relative;
+        overflow: hidden;
         border-radius: 0 0 4px 4px;
     }
 
+    .post-media .video-overlay {
+        border-radius: 0 0 4px 4px;
+        z-index: @z-index-overlay;
+    }
+
     .post-media img {
-        display: block;
-        height: 315px;
+        position: absolute;
     }
 
     .post-media .modal-window {
@@ -196,11 +211,6 @@
 
     .post-media .video-overlay {
         border-radius: 0;
-    }
-
-    .post-media img {
-        height: 225px;
-        max-width: 375px;
     }
 
     .gutter {

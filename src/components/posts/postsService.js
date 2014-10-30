@@ -19,7 +19,16 @@ define([
             user: {
                 id: "2",
                 name: "Sam Soffes",
-                imageUri: "assets/images/avatar-1.png"
+                images: {
+                    medium: {
+                        imageUri: "assets/images/avatars/avatar-2.png",
+                        width: "62px",
+                        position: {
+                            x: "-12px",
+                            y: "-5px"
+                        }
+                    }
+                }
             },
             // createdDate:
             content: {
@@ -35,7 +44,16 @@ define([
                     user: {
                         id: "3",
                         name: "Jed Bridges",
-                        imageUri: "assets/images/avatar-1.png"
+                        images: {
+                            medium: {
+                                imageUri: "assets/images/avatars/avatar-3.png",
+                                width: "48px",
+                                position: {
+                                    x: "-5px",
+                                    y: "-3px"
+                                }
+                            }
+                        }
                     },
                     // createdDate:
                     content: {
@@ -47,7 +65,16 @@ define([
                     user: {
                         id: "4",
                         name: "Ren Walker",
-                        imageUri: "assets/images/avatar-1.png"
+                        images: {
+                            medium: {
+                                imageUri: "assets/images/avatars/avatar-4.png",
+                                width: "46px",
+                                position: {
+                                    x: "-3px",
+                                    y: "-4px"
+                                }
+                            }
+                        }
                     },
                     // createdDate:
                     content: {
@@ -61,11 +88,20 @@ define([
         },
 
         {
-            id: "4",
+            id: "5",
             user: {
-                id: "4",
+                id: "5",
                 name: "Meg Robichaud",
-                imageUri: "assets/images/avatar-1.png"
+                images: {
+                    medium: {
+                        imageUri: "assets/images/avatars/avatar-5.png",
+                        width: "59px",
+                        position: {
+                            x: "-3px",
+                            y: "-0px"
+                        }
+                    }
+                }
             },
             // createdDate:
             content: {
@@ -76,7 +112,14 @@ define([
             },
             media: {
                 type: "image",
-                source: "assets/images/post-img-1.png"
+                content: {
+                    uri: "assets/images/media/post-image-1.png",
+                    width: "587px",
+                    position: {
+                        x: "-8px",
+                        y: "-65px"
+                    }
+                }
             }
         },
 
@@ -85,7 +128,16 @@ define([
             user: {
                 id: "6",
                 name: "Kerem Suer",
-                imageUri: "assets/images/avatar-1.png"
+                images: {
+                    medium: {
+                        imageUri: "assets/images/avatars/avatar-6.png",
+                        width: "75px",
+                        position: {
+                            x: "-28px",
+                            y: "-8px"
+                        }
+                    }
+                }
             },
             // createdDate:
             content: {
@@ -101,7 +153,16 @@ define([
             user: {
                 id: "7",
                 name: "Liang Shi",
-                imageUri: "assets/images/avatar-1.png"
+                images: {
+                    medium: {
+                        imageUri: "assets/images/avatars/avatar-7.png",
+                        width: "54px",
+                        position: {
+                            x: "-6px",
+                            y: "-3px"
+                        }
+                    }
+                }
             },
             // createdDate:
             content: {
@@ -113,11 +174,20 @@ define([
         },
 
         {
-            id: "5",
+            id: "8",
             user: {
-                id: "5",
+                id: "8",
                 name: "Vitor Leal",
-                imageUri: "assets/images/avatar-1.png"
+                images: {
+                    medium: {
+                        imageUri: "assets/images/avatars/avatar-8.png",
+                        width: "44px",
+                        position: {
+                            x: "-2px",
+                            y: "-2px"
+                        }
+                    }
+                }
             },
             // createdDate:
             content: {
@@ -128,16 +198,32 @@ define([
             },
             media: {
                 type: "video",
-                source: "assets/images/post-img-1.png"
+                content: {
+                    uri: "assets/images/media/post-image-2.png",
+                    width: "600px",
+                    position: {
+                        x: "-13px",
+                        y: "-80px"
+                    }
+                }
             }
         },
 
         {
-            id: "8",
+            id: "9",
             user: {
-                id: "8",
+                id: "9",
                 name: "Pallavi Gupta",
-                imageUri: "assets/images/avatar-1.png"
+                images: {
+                    medium: {
+                        imageUri: "assets/images/avatars/avatar-9.png",
+                        width: "51px",
+                        position: {
+                            x: "-8px",
+                            y: "-5px"
+                        }
+                    }
+                }
             },
             // createdDate:
             content: {
@@ -150,11 +236,20 @@ define([
         },
 
         {
-            id: "9",
+            id: "10",
             user: {
-                id: "9",
+                id: "10",
                 name: "Jenny Shen",
-                imageUri: "assets/images/avatar-1.png"
+                images: {
+                    medium: {
+                        imageUri: "assets/images/avatars/avatar-10.png",
+                        width: "54px",
+                        position: {
+                            x: "-7px",
+                            y: "-9px"
+                        }
+                    }
+                }
             },
             // createdDate:
             content: {
@@ -165,16 +260,32 @@ define([
             },
             media: {
                 type: "image",
-                source: "assets/images/post-img-1.png"
+                content: {
+                    uri: "assets/images/media/post-image-3.png",
+                    width: "645px",
+                    position: {
+                        x: "-29px",
+                        y: "-93px"
+                    }
+                }
             }
         },
 
         {
-            id: "10",
+            id: "11",
             user: {
-                id: "10",
+                id: "11",
                 name: "Michael Wong",
-                imageUri: "assets/images/avatar-1.png"
+                images: {
+                    medium: {
+                        imageUri: "assets/images/avatars/avatar-11.png",
+                        width: "47px",
+                        position: {
+                            x: "-16px",
+                            y: "-6px"
+                        }
+                    }
+                }
             },
             // createdDate:
             content: {
@@ -185,7 +296,14 @@ define([
             },
             media: {
                 type: "video",
-                source: "assets/images/post-img-1.png"
+                content: {
+                    uri: "assets/images/media/post-image-4.png",
+                    width: "1280px",
+                    position: {
+                        x: "-213px",
+                        y: "-133px"
+                    }
+                }
             }
         }
     ];

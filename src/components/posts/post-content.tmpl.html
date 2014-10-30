@@ -2,7 +2,12 @@
     <div class="media-object pull-left avatar">
         <img data-bind="
             attr: {
-                src: postModel().data().user.imageUri
+                src: postModel().data().user.images.medium.imageUri
+            },
+            style: {
+                left: postModel().data().user.images.medium.position.x,
+                width: postModel().data().user.images.medium.width,
+                top: postModel().data().user.images.medium.position.y
             }
         ">
     </div>
