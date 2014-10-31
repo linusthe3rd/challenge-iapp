@@ -43,6 +43,7 @@ define([
 
             ko.utils.domNodeDisposal.addDisposeCallback(element, function () {
                 destroyMasonryInstance(element);
+                saveMasonryInstance(element, null);
             });
         },
         update: function (element, valueAccessor) {

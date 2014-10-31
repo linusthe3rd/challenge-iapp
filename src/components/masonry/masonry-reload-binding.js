@@ -1,8 +1,10 @@
 define([
     'jquery',
+    'lodash',
     'knockout'
 ], function (
     $,
+    _,
     ko
 ) {
     'use strict';
@@ -29,23 +31,29 @@ define([
     ko.bindingHandlers.masonryReload = {
         init: function (element, valueAccessor) {
             ko.unwrap(valueAccessor());
-            var $parentNode = $(element).closest(L_GRID_CLASS);
 
             ko.utils.domNodeDisposal.addDisposeCallback(element, function () {
-                setTimeout(function () {
-                    // Wait until the main thread has completed its work before we
-                    // reset the layout. This ensures that masonry executes its layout
-                    // after the attached element has been completely removed from the
-                    // page.
-                    if ($parentNode.length > 0) {
-                        layoutMasonry($parentNode);
-                    }
+                var $parentNode = $(element).closest(L_GRID_CLASS);
 
+                // Wait until the main thread has completed its work before we
+                // reset the layout. This ensures that masonry executes its layout
+                // after the attached element has been completely removed from the
+                // page.
+                setTimeout(function () {
+                    layoutMasonry($parentNode);
                 }, 0);
             });
+
+            return { controlsDescendantBindings: true };
         },
-        update: function (element, valueAccessor) {
+        update: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
             ko.unwrap(valueAccessor());
+
+            if (_.has(bindingContext.$parent, "isGridLayout")) {
+                ko.unwrap(bindingContext.$parent.isGridLayout());
+            }
+
+
             var $parentNode = $(element).closest(L_GRID_CLASS);
 
             if ($parentNode.length === 0) {
