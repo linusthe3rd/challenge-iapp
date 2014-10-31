@@ -1,7 +1,14 @@
 <div class="modal">
     <div class="modal-window">
+        <!--
+            This anchor accounts for an IE issue where embedding an object into a <button>
+            prevents the button from being clickable if the object takes up the entire content
+            of the button. To work around this, this anchor will be overlayed on top of the button
+            to make it clickable. The tabindex setting will ensure that the button gets keyboard
+            focus instead of the anchor.
+         -->
+        <a href="javascript:void(0);" class="object-btn modal-object-btn" data-bind="click: closeModal" tabindex="-1"></a>
         <button class="btn modal-close-btn" type="button" data-bind="click: closeModal">
-            <a href="javascript:void(0);" class="object-btn" data-bind="click: closeModal" tabindex="-1"></a>
             <object type="image/svg+xml" data="assets/svg/close.svg"></object>
         </button>
         <div class="modal-content" data-bind="template: contentTemplate"></div>

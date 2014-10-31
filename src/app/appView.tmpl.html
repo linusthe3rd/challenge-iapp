@@ -9,9 +9,16 @@
         <li class="action new-post-action" data-bind="
             modal: 'app/newPost/newPostModal'
         ">
+            <!--
+                This anchor accounts for an IE issue where embedding an object into a <button>
+                prevents the button from being clickable if the object takes up the entire content
+                of the button. To work around this, this anchor will be overlayed on top of the button
+                to make it clickable. The tabindex setting will ensure that the button gets keyboard
+                focus instead of the anchor.
+             -->
+            <a href="javascript:void(0);" class="object-btn modal-toggle" tabindex="-1">&nbsp;</a>
             <button class="btn new-post-btn modal-toggle" type="button">
-                <a href="javascript:void(0);" class="object-btn modal-toggle" tabindex="-1"></a>
-                <object type="image/svg+xml" data="assets/svg/new-post.svg" class="logo"></object>
+                <object type="image/svg+xml" data="assets/svg/new-post.svg" class="logo new-post-icon"></object>
             </button>
         </li>
         <li class="action form search-action">
