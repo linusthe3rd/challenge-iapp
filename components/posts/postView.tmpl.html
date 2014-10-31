@@ -1,0 +1,73 @@
+<div class="post-content" data-bind="
+    css: {
+        'is-displaying-extra-content': postModel().hasMedia,
+        'is-displaying-replies': isDisplayingReplies,
+        'has-replies': postModel().hasReplies
+    }
+">
+    <!-- ko template: 'components/posts/post-actions'-->
+    <!-- /ko -->
+
+    <!-- ko template: 'components/posts/post-content'-->
+    <!-- /ko -->
+
+    <!-- ko if: postModel().hasMedia -->
+        <div class="post-media" data-bind="modal: 'components/posts/mediaDetailPost'">
+            <button class="btn media-btn modal-toggle">
+                <div class="post-media-wrapper">
+                    <!-- ko if: postModel().data().media.type === 'video' -->
+                        <!-- ko template: 'components/video-overlay/video-overlay' -->
+                        <!-- /ko -->
+                    <!-- /ko -->
+
+                    <!-- ko if: mediaSize() == "medium" -->
+                    <img alt="" data-bind="
+                        attr: {
+                            src: postModel().data().media.content.uri
+                        },
+                        style: {
+                            left: postModel().data().media.content.position.x,
+                            top: postModel().data().media.content.position.y,
+                            width: postModel().data().media.content.width
+                        }
+                    ">
+                    <!-- /ko -->
+
+                    <!-- ko if: mediaSize() == "small" -->
+                    <img alt="" data-bind="
+                        attr: {
+                            src: postModel().data().media.content.uri
+                        }
+                    ">
+                    <!-- /ko -->
+                </div>
+            </button>
+        </div>
+    <!-- /ko -->
+
+    <div class="gutter"></div>
+</div>
+
+
+
+<!-- ko if: isDisplayingReplies -->
+    <ul class="post-replies list-unstyled" data-bind="placeholder">
+        <!-- ko foreach: replyPostViews() -->
+        <li class="reply">
+            <!-- ko template: 'components/posts/post-actions'-->
+            <!-- /ko -->
+
+            <!-- ko template: 'components/posts/post-content'-->
+            <!-- /ko -->
+        </li>
+        <!-- /ko -->
+
+        <!-- ko if: isDisplayingCreateNewReply -->
+        <li class="reply reply-input form" data-bind="
+            masonryReload: isDisplayingCreateNewReply
+        ">
+            <input class="reply-field form-control" type="text" placeholder="Reply...">
+        </li>
+        <!-- /ko -->
+    </ul>
+<!-- /ko -->

@@ -1,0 +1,108 @@
+<div class="home-page" data-bind="placeholder">
+    <div class="home-header">
+        <div class="new-post form">
+            <textarea placeholder="What's on your mind?" class="form-control new-post-input"></textarea>
+
+            <ul class="media-btn-list list-inline">
+                <li>
+                    <button class="btn add-media-btn">
+                        <span class="icon-wrapper">
+                            <object type="image/svg+xml" data="assets/svg/camera-light.svg" class="logo"></object>
+                        </span>
+                        <span class="label">Add Picture</span>
+                    </button>
+                </li>
+                <li>
+                    <button class="btn add-media-btn add-video-btn">
+                        <span class="icon-wrapper">
+                            <object type="image/svg+xml" data="assets/svg/video-light.svg" class="logo"></object>
+                        </span>
+                        <span class="label">Add Video</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <div class="subnav">
+            <div class="subnav-container">
+                <ul class="nav nav-tabs">
+                    <li data-bind="
+                        css: {
+                            'active': selectedFilter() === 'all'
+                        }
+                    ">
+                        <button class="btn btn-link" data-bind="click: displayAllPosts">
+                            <span>ALL POSTS</span>
+                        </button>
+                    </li>
+
+                    <li data-bind="
+                        css: {
+                            'active': selectedFilter() === 'image'
+                        }
+                    ">
+                        <button class="btn btn-link" data-bind="click: displayPhotoPosts">
+                            <span>PHOTOS</span>
+                        </button>
+                    </li>
+
+                    <li data-bind="
+                        css: {
+                            'active': selectedFilter() === 'video'
+                        }
+                    ">
+                        <button class="btn btn-link" data-bind="click: displayVideoPosts">
+                            <span>VIDEOS</span>
+                        </button>
+                    </li>
+                </ul>
+
+                <ul class="layout-tabs list-inline">
+                    <li class="layout-tab">
+                        <button class="btn list-layout-btn" type="button" data-bind="
+                            click: displayListLayout,
+                            css: {
+                                'is-selected': selectedLayout() === 'l-list'
+                            }
+                        "></button>
+                    </li>
+
+                    <li class="layout-tab">
+                        <button class="btn grid-layout-btn" type="button" data-bind="
+                            click: displayGridLayout,
+                            css: {
+                                'is-selected': selectedLayout() === 'l-grid'
+                            }
+                        "></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ko ifnot: isLoading -->
+    <div class="posts-container">
+        <ul class="posts-list list-unstyled" data-bind="
+            css: selectedLayout,
+            foreach: postViews,
+            masonry: {
+                isActive: isGridLayout,
+                options: {
+                    itemSelector: '.post',
+                    gutter: 25
+                }
+            }
+        ">
+            <li class="post" data-bind="
+                css: {
+                    'post-sm': $parent.isGridLayout
+                },
+                template: 'components/posts/postView'
+            "></li>
+        </ul>
+    </div>
+
+    <!-- /ko -->
+</div>
+

@@ -1,0 +1,106 @@
+<div class="app-header">
+    <div class="logo pull-left">
+        <a href="#">
+            <img src="assets/images/simplysocial-logo.png" alt="simplysocial" width="137px" height="25px">
+        </a>
+    </div>
+
+    <ul class="action-items list-inline pull-right">
+        <li class="action new-post-action" data-bind="
+            modal: 'app/newPost/newPostModal'
+        ">
+            <!--
+                This anchor accounts for an IE issue where embedding an object into a <button>
+                prevents the button from being clickable if the object takes up the entire content
+                of the button. To work around this, this anchor will be overlayed on top of the button
+                to make it clickable. The tabindex setting will ensure that the button gets keyboard
+                focus instead of the anchor.
+             -->
+            <a href="javascript:void(0);" class="object-btn modal-toggle" tabindex="-1">&nbsp;</a>
+            <button class="btn new-post-btn modal-toggle" type="button">
+                <object type="image/svg+xml" data="assets/svg/new-post.svg" class="logo new-post-icon"></object>
+            </button>
+        </li>
+        <li class="action form search-action">
+            <div class="input-group">
+                <input type="text" class="form-control search-form-control">
+                <span class="input-group-addon">
+                    <object type="image/svg+xml" data="assets/svg/search.svg" class="logo"></object>
+                </span>
+            </div>
+        </li>
+        <li class="action user-nav-action">
+            <span class="dropdown" data-bind="dropdown">
+                <button class="btn dropdown-toggle" type="button">
+                    <div class="avatar avatar-sm">
+                        <img data-bind="
+                            attr: {
+                                src: user().images().small.imageUri
+                            },
+                            style: {
+                                left: user().images().small.position.x,
+                                width: user().images().small.width,
+                                top: user().images().small.position.y
+                            }
+                        ">
+                    </div>
+
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li class="caret"></li>
+                    <li>
+                        <span>Profile</span>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <span>Followers</span>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <span>Following</span>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#/settings">Settings</a>
+                    </li>
+                </ul>
+            </span>
+        </li>
+    </ul>
+</div>
+
+<!-- ko if: currentView -->
+    <div class="content-wrapper" data-bind="
+        template: {
+            name: currentView().template,
+            data: currentView
+        }
+    "></div>
+<!-- /ko -->
+
+<div class="app-footer">
+    <nav class="footer-nav">
+        <ul class="list-inline">
+            <li class="link">
+                <a href="#">ABOUT US</a>
+            </li>
+
+            <li class="link">
+                <a href="#">SUPPORT</a>
+            </li>
+
+            <li class="link">
+                <a href="#">PRIVACY</a>
+            </li>
+
+            <li class="link">
+                <a href="#">TERMS</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="copyright">
+        <span>&#0169; 2014 SIMPLYSOCIAL</span>
+    </div>
+</div>

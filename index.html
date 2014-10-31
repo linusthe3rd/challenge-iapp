@@ -1,0 +1,613 @@
+<!DOCTYPE html><!DOCTYPE html>
+<html>
+    <head>
+        <title>SimplySocial</title>
+        <meta charset="utf-8">
+        <!-- <link rel="icon" type="image/png" href="img/favicon.png" /> -->
+
+        <link rel="stylesheet" href="style.min.css">
+    <script id="app/appView" type="text/html"><div class="app-header">
+    <div class="logo pull-left">
+        <a href="#">
+            <img src="assets/images/simplysocial-logo.png" alt="simplysocial" width="137px" height="25px">
+        </a>
+    </div>
+
+    <ul class="action-items list-inline pull-right">
+        <li class="action new-post-action" data-bind="
+            modal: 'app/newPost/newPostModal'
+        ">
+            <!--
+                This anchor accounts for an IE issue where embedding an object into a <button>
+                prevents the button from being clickable if the object takes up the entire content
+                of the button. To work around this, this anchor will be overlayed on top of the button
+                to make it clickable. The tabindex setting will ensure that the button gets keyboard
+                focus instead of the anchor.
+             -->
+            <a href="javascript:void(0);" class="object-btn modal-toggle" tabindex="-1">&nbsp;</a>
+            <button class="btn new-post-btn modal-toggle" type="button">
+                <object type="image/svg+xml" data="assets/svg/new-post.svg" class="logo new-post-icon"></object>
+            </button>
+        </li>
+        <li class="action form search-action">
+            <div class="input-group">
+                <input type="text" class="form-control search-form-control">
+                <span class="input-group-addon">
+                    <object type="image/svg+xml" data="assets/svg/search.svg" class="logo"></object>
+                </span>
+            </div>
+        </li>
+        <li class="action user-nav-action">
+            <span class="dropdown" data-bind="dropdown">
+                <button class="btn dropdown-toggle" type="button">
+                    <div class="avatar avatar-sm">
+                        <img data-bind="
+                            attr: {
+                                src: user().images().small.imageUri
+                            },
+                            style: {
+                                left: user().images().small.position.x,
+                                width: user().images().small.width,
+                                top: user().images().small.position.y
+                            }
+                        ">
+                    </div>
+
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li class="caret"></li>
+                    <li>
+                        <span>Profile</span>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <span>Followers</span>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <span>Following</span>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#/settings">Settings</a>
+                    </li>
+                </ul>
+            </span>
+        </li>
+    </ul>
+</div>
+
+<!-- ko if: currentView -->
+    <div class="content-wrapper" data-bind="
+        template: {
+            name: currentView().template,
+            data: currentView
+        }
+    "></div>
+<!-- /ko -->
+
+<div class="app-footer">
+    <nav class="footer-nav">
+        <ul class="list-inline">
+            <li class="link">
+                <a href="#">ABOUT US</a>
+            </li>
+
+            <li class="link">
+                <a href="#">SUPPORT</a>
+            </li>
+
+            <li class="link">
+                <a href="#">PRIVACY</a>
+            </li>
+
+            <li class="link">
+                <a href="#">TERMS</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="copyright">
+        <span>&#0169; 2014 SIMPLYSOCIAL</span>
+    </div>
+</div></script><script id="app/home/home" type="text/html"><div class="home-page" data-bind="placeholder">
+    <div class="home-header">
+        <div class="new-post form">
+            <textarea placeholder="What's on your mind?" class="form-control new-post-input"></textarea>
+
+            <ul class="media-btn-list list-inline">
+                <li>
+                    <button class="btn add-media-btn">
+                        <span class="icon-wrapper">
+                            <object type="image/svg+xml" data="assets/svg/camera-light.svg" class="logo"></object>
+                        </span>
+                        <span class="label">Add Picture</span>
+                    </button>
+                </li>
+                <li>
+                    <button class="btn add-media-btn add-video-btn">
+                        <span class="icon-wrapper">
+                            <object type="image/svg+xml" data="assets/svg/video-light.svg" class="logo"></object>
+                        </span>
+                        <span class="label">Add Video</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <div class="subnav">
+            <div class="subnav-container">
+                <ul class="nav nav-tabs">
+                    <li data-bind="
+                        css: {
+                            'active': selectedFilter() === 'all'
+                        }
+                    ">
+                        <button class="btn btn-link" data-bind="click: displayAllPosts">
+                            <span>ALL POSTS</span>
+                        </button>
+                    </li>
+
+                    <li data-bind="
+                        css: {
+                            'active': selectedFilter() === 'image'
+                        }
+                    ">
+                        <button class="btn btn-link" data-bind="click: displayPhotoPosts">
+                            <span>PHOTOS</span>
+                        </button>
+                    </li>
+
+                    <li data-bind="
+                        css: {
+                            'active': selectedFilter() === 'video'
+                        }
+                    ">
+                        <button class="btn btn-link" data-bind="click: displayVideoPosts">
+                            <span>VIDEOS</span>
+                        </button>
+                    </li>
+                </ul>
+
+                <ul class="layout-tabs list-inline">
+                    <li class="layout-tab">
+                        <button class="btn list-layout-btn" type="button" data-bind="
+                            click: displayListLayout,
+                            css: {
+                                'is-selected': selectedLayout() === 'l-list'
+                            }
+                        "></button>
+                    </li>
+
+                    <li class="layout-tab">
+                        <button class="btn grid-layout-btn" type="button" data-bind="
+                            click: displayGridLayout,
+                            css: {
+                                'is-selected': selectedLayout() === 'l-grid'
+                            }
+                        "></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ko ifnot: isLoading -->
+    <div class="posts-container">
+        <ul class="posts-list list-unstyled" data-bind="
+            css: selectedLayout,
+            foreach: postViews,
+            masonry: {
+                isActive: isGridLayout,
+                options: {
+                    itemSelector: '.post',
+                    gutter: 25
+                }
+            }
+        ">
+            <li class="post" data-bind="
+                css: {
+                    'post-sm': $parent.isGridLayout
+                },
+                template: 'components/posts/postView'
+            "></li>
+        </ul>
+    </div>
+
+    <!-- /ko -->
+</div>
+
+</script><script id="app/newPost/newPostModal" type="text/html"><div class="new-post new-post-modal form">
+    <label for="new-post-input-modal" class="new-post-title">Create new message</label>
+    <textarea name="" id="new-post-input-modal" class="form-control new-post-input"></textarea>
+
+    <ul class="media-btn-list list-inline pull-left">
+        <li>
+            <button class="btn add-media-btn">
+                <span class="icon-wrapper">
+                    <object type="image/svg+xml" data="assets/svg/camera.svg" class="logo"></object>
+                </span>
+                <span class="label">Add Picture</span>
+            </button>
+        </li>
+        <li>
+            <button class="btn add-media-btn add-video-btn">
+                <span class="icon-wrapper">
+                    <object type="image/svg+xml" data="assets/svg/video.svg" class="logo"></object>
+                </span>
+                <span class="label">Add Video</span>
+            </button>
+        </li>
+    </ul>
+
+    <button class="btn btn-primary create-post-btn pull-right">
+        <span>Post</span>
+    </button>
+</div></script><script id="app/settings/settings" type="text/html"><div class="settings-view">
+    <div class="title page-title">
+        <h1>Settings</h1>
+    </div>
+
+    <form data-bind="submit: saveSettings">
+        <div class="account-settings settings-section">
+            <div class="title">
+                <h2>ACCOUNT</h2>
+            </div>
+
+            <!-- ko ifnot: isLoading -->
+            <div class="profile-pic">
+                <div class="avatar avatar-lg">
+
+                    <img data-bind="
+                        attr: {
+                            src: user().images().large.imageUri
+                        },
+                        style: {
+                            left: user().images().large.position.x,
+                            width: user().images().large.width,
+                            top: user().images().large.position.y
+                        }
+                    ">
+                </div>
+
+                <button class="btn btn-default btn-small" type="button">
+                    <span>Change</span>
+                </button>
+            </div>
+
+            <ul class="account-information list-unstyled form">
+                <li class="account-info-item account-info-name">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <object type="image/svg+xml" data="assets/svg/user.svg" class="logo"></object>
+                        </span>
+                        <input type="text" class="form-control" data-bind="value: user().name">
+                    </div>
+
+                </li>
+                <li class="account-info-item account-info-email">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <object type="image/svg+xml" data="assets/svg/mail.svg" class="logo"></object>
+                        </span>
+                        <input type="text" class="form-control" data-bind="value: user().email">
+                    </div>
+
+                </li>
+                <li class="account-info-item account-info-password">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <img src="assets/images/lock.png" alt="">
+                        </span>
+                        <input type="password" class="form-control" data-bind="value: user().password">
+                        <span class="input-group-addon">change</span>
+                    </div>
+
+                </li>
+            </ul>
+            <!-- /ko -->
+        </div>
+
+        <div class="notifications-settings settings-section">
+            <div class="title">
+                <h2>NOTIFICATIONS</h2>
+            </div>
+
+            <!-- ko ifnot: isLoading -->
+            <ul class="notification-options list-unstyled">
+                <li class="notification-item">
+                    <div class="flipswitch" data-bind="flipswitch: settings().isFavoriteNotificationOn"></div>
+                    <span class="label">email me when my posts are marked as favorites</span>
+                </li>
+                <li class="notification-item">
+                    <div class="flipswitch" data-bind="flipswitch: settings().isMentionNotificationOn"></div>
+                    <span class="label">email me when I'm mentioned</span>
+                </li>
+                <li class="notification-item">
+                    <div class="flipswitch" data-bind="flipswitch: settings().isReplyNotificationOn"></div>
+                    <span class="label">email me when I get a reply</span>
+                </li>
+                <li class="notification-item">
+                    <div class="flipswitch" data-bind="flipswitch: settings().isFollowNotificationOn"></div>
+                    <span class="label">email me when someone follows me</span>
+                </li>
+            </ul>
+            <!-- /ko -->
+        </div>
+
+        <div class="privacy-settings settings-section">
+            <div class="title">
+                <h2>PRIVACY</h2>
+            </div>
+
+            <!-- ko ifnot: isLoading -->
+            <ul class="privacy-tags list-unstyled">
+                <li class="privacy-tags-option">
+                    <input type="radio"
+                           value="anyone"
+                           name="settings-privacy-tags"
+                           id="settings-privacy-tags-anyone"
+                           data-bind="checked: settings().whoCanTagMe">
+                    <label for="settings-privacy-tags-anyone">
+                        <div class="radio" tabindex="0"></div>
+                        <span>allow anyone to tag me</span>
+                    </label>
+                </li>
+
+                <li class="privacy-tags-option">
+                    <input type="radio"
+                           value="followers"
+                           name="settings-privacy-tags"
+                           id="settings-privacy-tags-followers"
+                           tabindex="0"
+                           data-bind="checked: settings().whoCanTagMe">
+                    <label for="settings-privacy-tags-followers">
+                        <div class="radio" tabindex="0"></div>
+                        <span>only allow people I follow tag me</span>
+                    </label>
+                </li>
+
+                <li class="privacy-tags-option">
+                    <input type="radio"
+                           value="noone"
+                           name="settings-privacy-tags"
+                           id="settings-privacy-tags-noone"
+                           tabindex="0"
+                           data-bind="checked: settings().whoCanTagMe">
+                    <label for="settings-privacy-tags-noone">
+                        <div class="radio" tabindex="0"></div>
+                        <span>don't allow anyone to tag me</span>
+                    </label>
+                </li>
+            </ul>
+
+            <ul class="privacy-others list-unstyled">
+                <li class="settings-privacy-other">
+                    <input type="checkbox"
+                           name="settings-privacy-tags"
+                           id="settings-privacy-other-add-location"
+                           tabindex="0"
+                           data-bind="checked: settings().addLocationToPosts">
+                    <label for="settings-privacy-other-add-location">
+                        <div class="checkbox" tabindex="0"></div>
+                        <span>add a location to my posts</span>
+                    </label>
+                </li>
+
+                <li class="settings-privacy-other">
+                    <input type="checkbox"
+                           name="settings-privacy-tags"
+                           id="settings-privacy-other-find-email"
+                           tabindex="0"
+                           data-bind="checked: settings().canFindByEmail">
+                    <label for="settings-privacy-other-find-email">
+                        <div class="checkbox" tabindex="0"></div>
+                        <span>let others find me by me email address</span>
+                    </label>
+                </li>
+
+                <li class="settings-privacy-other">
+                    <input type="checkbox"
+                           name="settings-privacy-tags"
+                           id="settings-privacy-other-tailor-ads"
+                           tabindex="0"
+                           data-bind="checked: settings().shouldDisplayPersonalAds">
+                    <label for="settings-privacy-other-tailor-ads">
+                        <div class="checkbox" tabindex="0"></div>
+                        <span>tailor ads based on my information</span>
+                    </label>
+                </li>
+            </ul>
+            <!-- /ko -->
+        </div>
+
+        <button type="submit" class="btn btn-primary save-settings-btn" data-bind="disable: isSaving">
+            <span>Save Changes</span>
+        </button>
+    </form>
+</div>
+
+
+</script><script id="components/flipswitch/flipswitch" type="text/html"><span class="fs-state fs-state-off"></span>
+<span class="fs-state fs-state-on"></span>
+<button type="button" class="btn fs-btn" tabindex="-1"></button></script><script id="components/modal/modal" type="text/html"><div class="modal">
+    <div class="modal-window">
+        <!--
+            This anchor accounts for an IE issue where embedding an object into a <button>
+            prevents the button from being clickable if the object takes up the entire content
+            of the button. To work around this, this anchor will be overlayed on top of the button
+            to make it clickable. The tabindex setting will ensure that the button gets keyboard
+            focus instead of the anchor.
+         -->
+        <a href="javascript:void(0);" class="object-btn modal-object-btn" data-bind="click: closeModal" tabindex="-1"></a>
+        <button class="btn modal-close-btn" type="button" data-bind="click: closeModal">
+            <object type="image/svg+xml" data="assets/svg/close.svg"></object>
+        </button>
+        <div class="modal-content" data-bind="template: contentTemplate"></div>
+    </div>
+</div></script><script id="components/posts/mediaDetailPost" type="text/html"><div class="media-detail-post" data-bind="placeholder">
+    <div class="post-media">
+        <img alt="" data-bind="
+            attr: {
+                src: postModel().data().media.content.uri
+            }
+        ">
+    </div>
+
+    <div class="post-content">
+        <!-- ko template: 'components/posts/post-content'-->
+        <!-- /ko -->
+
+        <!-- ko template: 'components/posts/post-actions'-->
+        <!-- /ko -->
+
+        <div class="reply reply-input form" data-bind="
+            masonryReload: {
+                observable: isDisplayingCreateNewReply,
+                parentSelector: '.posts-list'
+            }
+        ">
+            <input class="reply-field form-control" type="text" placeholder="Reply...">
+        </div>
+    </div>
+</div></script><script id="components/posts/post-actions" type="text/html"><ul class="actions list-inline">
+    <li class="reply-action">
+        <object type="image/svg+xml" data="assets/svg/reply.svg" class="logo"></object>
+    </li>
+    <li class="favorite-action">
+        <object type="image/svg+xml" data="assets/svg/favorite.svg" class="logo"></object>
+    </li>
+    <li>
+        50m
+    </li>
+</ul></script><script id="components/posts/post-content" type="text/html"><div class="media">
+    <div class="media-object pull-left avatar">
+        <img data-bind="
+            attr: {
+                src: postModel().data().user.images.medium.imageUri
+            },
+            style: {
+                left: postModel().data().user.images.medium.position.x,
+                width: postModel().data().user.images.medium.width,
+                top: postModel().data().user.images.medium.position.y
+            }
+        ">
+    </div>
+
+    <div class="media-body">
+        <h4 class="media-heading post-title" data-bind="text: postModel().data().user.name"></h4>
+        <div class="post-body" data-bind="html: postModel().htmlContent"></div>
+
+        <!-- ko if: postModel().hasReplies -->
+        <button class="btn btn-link expand-btn" data-bind="
+            click: toggleReplies,
+            css: {
+                'is-expanded': isDisplayingReplies
+            }
+        ">
+            <span data-bind="ifnot: isDisplayingReplies">Expand</span>
+            <span data-bind="if: isDisplayingReplies">Collapse</span>
+
+            <span class="caret"></span>
+        </button>
+        <!-- /ko -->
+    </div>
+</div></script><script id="components/posts/postView" type="text/html"><div class="post-content" data-bind="
+    css: {
+        'is-displaying-extra-content': postModel().hasMedia,
+        'is-displaying-replies': isDisplayingReplies,
+        'has-replies': postModel().hasReplies
+    }
+">
+    <!-- ko template: 'components/posts/post-actions'-->
+    <!-- /ko -->
+
+    <!-- ko template: 'components/posts/post-content'-->
+    <!-- /ko -->
+
+    <!-- ko if: postModel().hasMedia -->
+        <div class="post-media" data-bind="modal: 'components/posts/mediaDetailPost'">
+            <button class="btn media-btn modal-toggle">
+                <div class="post-media-wrapper">
+                    <!-- ko if: postModel().data().media.type === 'video' -->
+                        <!-- ko template: 'components/video-overlay/video-overlay' -->
+                        <!-- /ko -->
+                    <!-- /ko -->
+
+                    <!-- ko if: mediaSize() == "medium" -->
+                    <img alt="" data-bind="
+                        attr: {
+                            src: postModel().data().media.content.uri
+                        },
+                        style: {
+                            left: postModel().data().media.content.position.x,
+                            top: postModel().data().media.content.position.y,
+                            width: postModel().data().media.content.width
+                        }
+                    ">
+                    <!-- /ko -->
+
+                    <!-- ko if: mediaSize() == "small" -->
+                    <img alt="" data-bind="
+                        attr: {
+                            src: postModel().data().media.content.uri
+                        }
+                    ">
+                    <!-- /ko -->
+                </div>
+            </button>
+        </div>
+    <!-- /ko -->
+
+    <div class="gutter"></div>
+</div>
+
+
+
+<!-- ko if: isDisplayingReplies -->
+    <ul class="post-replies list-unstyled" data-bind="placeholder">
+        <!-- ko foreach: replyPostViews() -->
+        <li class="reply">
+            <!-- ko template: 'components/posts/post-actions'-->
+            <!-- /ko -->
+
+            <!-- ko template: 'components/posts/post-content'-->
+            <!-- /ko -->
+        </li>
+        <!-- /ko -->
+
+        <!-- ko if: isDisplayingCreateNewReply -->
+        <li class="reply reply-input form" data-bind="
+            masonryReload: isDisplayingCreateNewReply
+        ">
+            <input class="reply-field form-control" type="text" placeholder="Reply...">
+        </li>
+        <!-- /ko -->
+    </ul>
+<!-- /ko --></script><script id="components/video-overlay/video-overlay" type="text/html"><div class="video-overlay">
+    <button class="btn play-btn">
+        <div class="caret"></div>
+    </button>
+</div></script></head>
+
+    <body>
+        <!-- ========== APP TAGS ========== -->
+
+        <div data-bind="
+            template: {
+                name: 'app/appView',
+                data: $data
+            },
+            placeholder
+        "></div>
+
+        <!-- ========== SCRIPT TAGS ========== -->
+
+        <script src="vendor/js/require.js"></script>
+        <script src="app/requireConfig.js"></script>
+
+        <script src="app.min.js"></script>
+    </body>
+</html>
