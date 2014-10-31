@@ -47,6 +47,12 @@ module.exports = function (grunt) {
             }
           }
         },
+        'gh-pages': {
+            options: {
+              base: 'dist'
+            },
+            src: ['**']
+        },
         jshint: {
             app: {
                 options: {
@@ -121,5 +127,5 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', ['clean:build', 'copy', 'requirejs', 'less:dist', 'cssmin', 'usemin', 'templateInline']);
 
-    grunt.registerTask('deploy', ['build']);
+    grunt.registerTask('deploy', ['build', 'gh-pages']);
 };
