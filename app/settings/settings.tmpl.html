@@ -34,7 +34,7 @@
                 <li class="account-info-item account-info-name">
                     <div class="input-group">
                         <span class="input-group-addon">
-                            <object type="image/svg+xml" data="assets/svg/user.svg" class="logo"></object>
+                            <object type="image/svg+xml" data="assets/svg/user.svg" tabindex="-1" class="logo"></object>
                         </span>
                         <input type="text" class="form-control" data-bind="value: user().name">
                     </div>
@@ -43,7 +43,7 @@
                 <li class="account-info-item account-info-email">
                     <div class="input-group">
                         <span class="input-group-addon">
-                            <object type="image/svg+xml" data="assets/svg/mail.svg" class="logo"></object>
+                            <object type="image/svg+xml" data="assets/svg/mail.svg" tabindex="-1" class="logo"></object>
                         </span>
                         <input type="text" class="form-control" data-bind="value: user().email">
                     </div>
@@ -96,15 +96,17 @@
             </div>
 
             <!-- ko ifnot: isLoading -->
+            <!-- <fieldset> -->
             <ul class="privacy-tags list-unstyled">
                 <li class="privacy-tags-option">
                     <input type="radio"
                            value="anyone"
                            name="settings-privacy-tags"
                            id="settings-privacy-tags-anyone"
+                           tabindex="0"
                            data-bind="checked: settings().whoCanTagMe">
                     <label for="settings-privacy-tags-anyone">
-                        <div class="radio" tabindex="0"></div>
+                        <div class="radio" tabindex="-1"></div>
                         <span>allow anyone to tag me</span>
                     </label>
                 </li>
@@ -117,7 +119,7 @@
                            tabindex="0"
                            data-bind="checked: settings().whoCanTagMe">
                     <label for="settings-privacy-tags-followers">
-                        <div class="radio" tabindex="0"></div>
+                        <div class="radio" tabindex="-1"></div>
                         <span>only allow people I follow tag me</span>
                     </label>
                 </li>
@@ -130,21 +132,21 @@
                            tabindex="0"
                            data-bind="checked: settings().whoCanTagMe">
                     <label for="settings-privacy-tags-noone">
-                        <div class="radio" tabindex="0"></div>
+                        <div class="radio" tabindex="-1"></div>
                         <span>don't allow anyone to tag me</span>
                     </label>
                 </li>
             </ul>
+        <!-- </fieldset> -->
 
             <ul class="privacy-others list-unstyled">
                 <li class="settings-privacy-other">
                     <input type="checkbox"
                            name="settings-privacy-tags"
                            id="settings-privacy-other-add-location"
-                           tabindex="0"
                            data-bind="checked: settings().addLocationToPosts">
                     <label for="settings-privacy-other-add-location">
-                        <div class="checkbox" tabindex="0"></div>
+                        <div class="checkbox" tabindex="-1"></div>
                         <span>add a location to my posts</span>
                     </label>
                 </li>
@@ -156,7 +158,7 @@
                            tabindex="0"
                            data-bind="checked: settings().canFindByEmail">
                     <label for="settings-privacy-other-find-email">
-                        <div class="checkbox" tabindex="0"></div>
+                        <div class="checkbox" tabindex="-1"></div>
                         <span>let others find me by me email address</span>
                     </label>
                 </li>
@@ -168,7 +170,7 @@
                            tabindex="0"
                            data-bind="checked: settings().shouldDisplayPersonalAds">
                     <label for="settings-privacy-other-tailor-ads">
-                        <div class="checkbox" tabindex="0"></div>
+                        <div class="checkbox" tabindex="-1"></div>
                         <span>tailor ads based on my information</span>
                     </label>
                 </li>

@@ -1,9 +1,11 @@
 define([
     'lodash',
-    'knockout'
+    'knockout',
+    'moment'
 ], function (
     _,
-    ko
+    ko,
+    moment
 ) {
     'use strict';
 
@@ -22,13 +24,25 @@ define([
 
         self.isDisplayingCreateNewReply = ko.observable(false);
 
+        self.mediaSize = ko.observable("medium");
+
         self.postModel = ko.observable(postModel);
 
         self.isDisplayingReplies = ko.computed(function () {
             return self.postModel().hasReplies() && isDisplayingReplies();
         });
 
-        self.mediaSize = ko.observable("medium");
+        self.timeSincePostCreation = ko.computed(function () {
+            var diff = moment().diff(self.postModel().data().createdDate, "minutes");
+
+            if (diff >= 60) {
+                return Math.floor(diff / 60) + "h";
+            } else if (diff >= 1) {
+                return diff + "m";
+            } else {
+                return "1m";
+            }
+        });
 
         self.replyPostViews = ko.computed(function () {
             // Look at the replies attached to the Post instance and convert them into

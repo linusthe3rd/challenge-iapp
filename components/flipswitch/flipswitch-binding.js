@@ -1,9 +1,11 @@
 define([
     'knockout',
-    'jquery'
+    'jquery',
+    'components/keyboard/keyCode'
 ], function (
     ko,
-    $
+    $,
+    keyCode
 ) {
     'use strict';
 
@@ -77,8 +79,11 @@ define([
             //
             // Event Handling
             //
+            $flipswitchContainer.on('keypress' + EVENT_NAMESPACE + ' click' + EVENT_NAMESPACE, function (event) {
+                if (event.type === 'keypress' && !(event.keyCode === keyCode.ENTER || event.keyCode === keyCode.SPACE)) {
+                    return;
+                }
 
-            $flipswitchContainer.on('click' + EVENT_NAMESPACE, function () {
                 // Do not trigger animations until the user interacts with the element
                 $flipswitchContainer.addClass(IS_ANIMATING_STATE_CLASS);
 
