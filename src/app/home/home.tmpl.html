@@ -1,11 +1,11 @@
 <div class="home-page" data-bind="placeholder">
     <div class="home-header">
         <div class="new-post form">
-            <textarea placeholder="What's on your mind?" class="form-control new-post-input"></textarea>
+            <textarea placeholder="What's on your mind?" spellcheck="true" class="form-control new-post-input"></textarea>
 
             <ul class="media-btn-list list-inline">
                 <li>
-                    <button class="btn add-media-btn">
+                    <button class="btn add-media-btn" type="button">
                         <span class="icon-wrapper">
                             <object type="image/svg+xml" data="assets/svg/camera-light.svg" class="logo"></object>
                         </span>
@@ -13,7 +13,7 @@
                     </button>
                 </li>
                 <li>
-                    <button class="btn add-media-btn add-video-btn">
+                    <button class="btn add-media-btn add-video-btn" type="button">
                         <span class="icon-wrapper">
                             <object type="image/svg+xml" data="assets/svg/video-light.svg" class="logo"></object>
                         </span>
@@ -31,7 +31,7 @@
                             'active': selectedFilter() === 'all'
                         }
                     ">
-                        <button class="btn btn-link" data-bind="click: displayAllPosts">
+                        <button class="btn btn-link" type="button" data-bind="click: displayAllPosts">
                             <span>ALL POSTS</span>
                         </button>
                     </li>
@@ -41,7 +41,7 @@
                             'active': selectedFilter() === 'image'
                         }
                     ">
-                        <button class="btn btn-link" data-bind="click: displayPhotoPosts">
+                        <button class="btn btn-link" type="button" data-bind="click: displayPhotoPosts">
                             <span>PHOTOS</span>
                         </button>
                     </li>
@@ -51,7 +51,7 @@
                             'active': selectedFilter() === 'video'
                         }
                     ">
-                        <button class="btn btn-link" data-bind="click: displayVideoPosts">
+                        <button class="btn btn-link" type="button" data-bind="click: displayVideoPosts">
                             <span>VIDEOS</span>
                         </button>
                     </li>

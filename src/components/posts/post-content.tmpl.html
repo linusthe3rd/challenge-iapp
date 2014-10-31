@@ -17,7 +17,7 @@
         <div class="post-body" data-bind="html: postModel().htmlContent"></div>
 
         <!-- ko if: postModel().hasReplies -->
-        <button class="btn btn-link expand-btn" data-bind="
+        <button class="btn btn-link expand-btn" type="button" data-bind="
             click: toggleReplies,
             css: {
                 'is-expanded': isDisplayingReplies
