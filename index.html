@@ -3,7 +3,8 @@
     <head>
         <title>SimplySocial</title>
         <meta charset="utf-8">
-        <!-- <link rel="icon" type="image/png" href="img/favicon.png" /> -->
+        <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="assets/images//favicon.ico" type="image/x-icon">
 
         <link rel="stylesheet" href="style.min.css">
     <script id="app/appView" type="text/html"><div class="app-header">
@@ -114,11 +115,11 @@
 </div></script><script id="app/home/home" type="text/html"><div class="home-page" data-bind="placeholder">
     <div class="home-header">
         <div class="new-post form">
-            <textarea placeholder="What's on your mind?" class="form-control new-post-input"></textarea>
+            <textarea placeholder="What's on your mind?" spellcheck="true" class="form-control new-post-input"></textarea>
 
             <ul class="media-btn-list list-inline">
                 <li>
-                    <button class="btn add-media-btn">
+                    <button class="btn add-media-btn" type="button">
                         <span class="icon-wrapper">
                             <object type="image/svg+xml" data="assets/svg/camera-light.svg" class="logo"></object>
                         </span>
@@ -126,7 +127,7 @@
                     </button>
                 </li>
                 <li>
-                    <button class="btn add-media-btn add-video-btn">
+                    <button class="btn add-media-btn add-video-btn" type="button">
                         <span class="icon-wrapper">
                             <object type="image/svg+xml" data="assets/svg/video-light.svg" class="logo"></object>
                         </span>
@@ -144,7 +145,7 @@
                             'active': selectedFilter() === 'all'
                         }
                     ">
-                        <button class="btn btn-link" data-bind="click: displayAllPosts">
+                        <button class="btn btn-link" type="button" data-bind="click: displayAllPosts">
                             <span>ALL POSTS</span>
                         </button>
                     </li>
@@ -154,7 +155,7 @@
                             'active': selectedFilter() === 'image'
                         }
                     ">
-                        <button class="btn btn-link" data-bind="click: displayPhotoPosts">
+                        <button class="btn btn-link" type="button" data-bind="click: displayPhotoPosts">
                             <span>PHOTOS</span>
                         </button>
                     </li>
@@ -164,7 +165,7 @@
                             'active': selectedFilter() === 'video'
                         }
                     ">
-                        <button class="btn btn-link" data-bind="click: displayVideoPosts">
+                        <button class="btn btn-link" type="button" data-bind="click: displayVideoPosts">
                             <span>VIDEOS</span>
                         </button>
                     </li>
@@ -221,11 +222,11 @@
 
 </script><script id="app/newPost/newPostModal" type="text/html"><div class="new-post new-post-modal form">
     <label for="new-post-input-modal" class="new-post-title">Create new message</label>
-    <textarea name="" id="new-post-input-modal" class="form-control new-post-input"></textarea>
+    <textarea id="new-post-input-modal" spellcheck="true" class="form-control new-post-input"></textarea>
 
     <ul class="media-btn-list list-inline pull-left">
         <li>
-            <button class="btn add-media-btn">
+            <button class="btn add-media-btn" type="button">
                 <span class="icon-wrapper">
                     <object type="image/svg+xml" data="assets/svg/camera.svg" class="logo"></object>
                 </span>
@@ -233,7 +234,7 @@
             </button>
         </li>
         <li>
-            <button class="btn add-media-btn add-video-btn">
+            <button class="btn add-media-btn add-video-btn" type="button">
                 <span class="icon-wrapper">
                     <object type="image/svg+xml" data="assets/svg/video.svg" class="logo"></object>
                 </span>
@@ -242,7 +243,7 @@
         </li>
     </ul>
 
-    <button class="btn btn-primary create-post-btn pull-right">
+    <button class="btn btn-primary create-post-btn pull-right" type="button">
         <span>Post</span>
     </button>
 </div></script><script id="app/settings/settings" type="text/html"><div class="settings-view">
@@ -501,7 +502,7 @@
         <div class="post-body" data-bind="html: postModel().htmlContent"></div>
 
         <!-- ko if: postModel().hasReplies -->
-        <button class="btn btn-link expand-btn" data-bind="
+        <button class="btn btn-link expand-btn" type="button" data-bind="
             click: toggleReplies,
             css: {
                 'is-expanded': isDisplayingReplies
@@ -529,7 +530,7 @@
 
     <!-- ko if: postModel().hasMedia -->
         <div class="post-media" data-bind="modal: 'components/posts/mediaDetailPost'">
-            <button class="btn media-btn modal-toggle">
+            <button class="btn media-btn modal-toggle" type="button">
                 <div class="post-media-wrapper">
                     <!-- ko if: postModel().data().media.type === 'video' -->
                         <!-- ko template: 'components/video-overlay/video-overlay' -->
@@ -587,7 +588,7 @@
         <!-- /ko -->
     </ul>
 <!-- /ko --></script><script id="components/video-overlay/video-overlay" type="text/html"><div class="video-overlay">
-    <button class="btn play-btn">
+    <button class="btn play-btn" type="button">
         <div class="caret"></div>
     </button>
 </div></script></head>

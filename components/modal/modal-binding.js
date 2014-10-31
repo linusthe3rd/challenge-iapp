@@ -20,7 +20,7 @@ define([
      * # Example Markup
      *
      * <div data-bind="modal: 'path/to/templateName'">
-     *     <button class="modal-toggle">Show Modal</button>
+     *     <button class="modal-toggle" type="button">Show Modal</button>
      * </div>
      *
      * # Arguments
