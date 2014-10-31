@@ -45,9 +45,12 @@
         padding-left: 20px;
         padding-right: 20px;
     }
+}
 
-    .object-btn {
-        display: block;
-        position: absolute;
-    }
+a.object-btn {
+    // border-right: 1px solid transparent;
+    // background-image: url("about:blank"); // hack for IE9
+    display: block;
+    position: absolute;
+    z-index: @z-index-overlay;
 }
