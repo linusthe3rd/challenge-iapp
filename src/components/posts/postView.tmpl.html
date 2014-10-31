@@ -51,7 +51,7 @@
 
 
 <!-- ko if: isDisplayingReplies -->
-    <ul class="post-replies list-unstyled">
+    <ul class="post-replies list-unstyled" data-bind="placeholder">
         <!-- ko foreach: replyPostViews() -->
         <li class="reply">
             <!-- ko template: 'components/posts/post-actions'-->
