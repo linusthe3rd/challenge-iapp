@@ -14,7 +14,13 @@ define([
     'use strict';
 
     return function () {
+        // ===============================================================================
+        // Private Attributes
+        // ===============================================================================
+
         var self = this;
+
+        // var postViewCollection = ko.observableArray();
 
         // ===============================================================================
         // Public Attributes
@@ -39,9 +45,16 @@ define([
         // Private Methods
         // ===============================================================================
 
-        var setMediaSizeOnPostViews = function (sizeName) {
+        var setMediaSizeOnPostViews = function () {
+            var size = "medium";
+
+            // Utilize peek to prevent a subscription from being created in a computed.
+            if (self.selectedLayout.peek() === "l-grid") {
+                size = "small";
+            }
+
             _.each(self.postViews(), function (view) {
-                view.mediaSize(sizeName);
+                view.mediaSize(size);
             });
         };
 
@@ -54,21 +67,21 @@ define([
         };
 
         self.displayPhotoPosts = function () {
-            self.selectedFilter("photos");
+            self.selectedFilter("image");
         };
 
         self.displayVideoPosts = function () {
-            self.selectedFilter("videos");
+            self.selectedFilter("video");
         };
 
         self.displayListLayout = function () {
-            setMediaSizeOnPostViews("medium");
             self.selectedLayout("l-list");
+            setMediaSizeOnPostViews();
         };
 
         self.displayGridLayout = function () {
-            setMediaSizeOnPostViews("small");
             self.selectedLayout("l-grid");
+            setMediaSizeOnPostViews();
         };
 
         // ===============================================================================
@@ -88,6 +101,8 @@ define([
                     });
 
                     self.postViews(postViews);
+
+                    setMediaSizeOnPostViews();
                 })
                 .finally(function () {
                     self.isLoading(false);

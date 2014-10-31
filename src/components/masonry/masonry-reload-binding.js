@@ -37,7 +37,10 @@ define([
                     // reset the layout. This ensures that masonry executes its layout
                     // after the attached element has been completely removed from the
                     // page.
-                    layoutMasonry($parentNode);
+                    if ($parentNode.length > 0) {
+                        layoutMasonry($parentNode);
+                    }
+
                 }, 0);
             });
         },

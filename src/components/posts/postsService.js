@@ -313,8 +313,21 @@ define([
     });
 
     var settingsService = {
-        getPosts: function () {
-            return Promise.resolve(postMockModelsCollection);
+        getPosts: function (filter) {
+            var posts = postMockModelsCollection;
+
+            if (!_.isUndefined(filter) && filter !== "all") {
+                posts = _.filter(postMockModelsCollection, function (postObj) {
+                    if (postObj.hasMedia()) {
+                        return postObj.data().media.type === filter;
+                    }
+
+
+                    return false;
+                });
+            }
+
+            return Promise.resolve(posts);
         },
 
         createPost: function (newPost) {
