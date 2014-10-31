@@ -333,6 +333,8 @@ define([
         },
 
         createPost: function (newPost) {
+            newPost.createdDate = moment().toISOString();
+
             postMockModelsCollection.unshift(new Post(newPost));
             return Promise.resolve();
         }

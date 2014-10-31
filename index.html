@@ -221,31 +221,37 @@
 </div>
 
 </script><script id="app/newPost/newPostModal" type="text/html"><div class="new-post new-post-modal form">
-    <label for="new-post-input-modal" class="new-post-title">Create new message</label>
-    <textarea id="new-post-input-modal" spellcheck="true" class="form-control new-post-input"></textarea>
+    <form data-bind="submit: createPost">
+        <label for="new-post-input-modal" class="new-post-title">Create new message</label>
+        <textarea id="new-post-input-modal"
+                  spellcheck="true"
+                  class="form-control new-post-input"
+                  data-bind="textInput: newPostContent">
+        </textarea>
 
-    <ul class="media-btn-list list-inline pull-left">
-        <li>
-            <button class="btn add-media-btn" type="button">
-                <span class="icon-wrapper">
-                    <object type="image/svg+xml" data="assets/svg/camera.svg" class="logo"></object>
-                </span>
-                <span class="label">Add Picture</span>
-            </button>
-        </li>
-        <li>
-            <button class="btn add-media-btn add-video-btn" type="button">
-                <span class="icon-wrapper">
-                    <object type="image/svg+xml" data="assets/svg/video.svg" class="logo"></object>
-                </span>
-                <span class="label">Add Video</span>
-            </button>
-        </li>
-    </ul>
+        <ul class="media-btn-list list-inline pull-left">
+            <li>
+                <button class="btn add-media-btn" type="button">
+                    <span class="icon-wrapper">
+                        <object type="image/svg+xml" data="assets/svg/camera.svg" class="logo"></object>
+                    </span>
+                    <span class="label">Add Picture</span>
+                </button>
+            </li>
+            <li>
+                <button class="btn add-media-btn add-video-btn" type="button">
+                    <span class="icon-wrapper">
+                        <object type="image/svg+xml" data="assets/svg/video.svg" class="logo"></object>
+                    </span>
+                    <span class="label">Add Video</span>
+                </button>
+            </li>
+        </ul>
 
-    <button class="btn btn-primary create-post-btn pull-right" type="button">
-        <span>Post</span>
-    </button>
+        <button class="btn btn-primary create-post-btn pull-right" type="submit">
+            <span>Post</span>
+        </button>
+    </form
 </div></script><script id="app/settings/settings" type="text/html"><div class="settings-view">
     <div class="title page-title">
         <h1>Settings</h1>

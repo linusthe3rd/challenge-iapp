@@ -407,6 +407,7 @@ input[type="radio"]:checked + label .radio:before {
   display: block;
 }
 .media .media-body {
+  display: table-cell;
   overflow: hidden;
 }
 .media .media-heading {
@@ -1098,8 +1099,7 @@ input[type="radio"]:checked + label .radio:before {
   border-top: 1px solid #dee1e5;
   font-size: 12px;
   font-weight: 600;
-  margin-bottom: 30px;
-  padding-top: 31px;
+  padding: 31px 0 30px 0;
   text-align: center;
 }
 .app-footer .footer-nav {
