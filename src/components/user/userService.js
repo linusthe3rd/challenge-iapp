@@ -22,6 +22,14 @@ define([
                     y: "-4px"
                 }
             },
+            medium: {
+                imageUri: "assets/images/avatars/avatar-1.png",
+                width: "48px",
+                position: {
+                    x: "-5px",
+                    y: "-5px"
+                }
+            },
             large: {
                 imageUri: "assets/images/avatars/avatar-1.png",
                 width: "95px",
