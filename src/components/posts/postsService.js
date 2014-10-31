@@ -2,12 +2,14 @@ define([
     'knockout',
     'lodash',
     'bluebird',
+    'moment',
 
     'components/posts/Post'
 ], function (
     ko,
     _,
     Promise,
+    moment,
 
     Post
 ) {
@@ -30,7 +32,7 @@ define([
                     }
                 }
             },
-            // createdDate:
+            createdDate: moment().subtract(3, 'minutes').toISOString(),
             content: {
                 body: "How to Get Inspired: the Right Way - Designmodo bit.ly/1lE4uJc Good stuff from @designmodo!",
                 links: {
@@ -55,7 +57,7 @@ define([
                             }
                         }
                     },
-                    // createdDate:
+                    createdDate: moment().subtract(1, 'hours').toISOString(),
                     content: {
                         body: "Great way to start the week. Thanks for sharing!"
                     }
@@ -76,7 +78,7 @@ define([
                             }
                         }
                     },
-                    // createdDate:
+                    createdDate: moment().subtract(1, 'hours').toISOString(),
                     content: {
                         body: "Feeling inspired now... thanks for great article @designmodo",
                         links: {
@@ -103,7 +105,7 @@ define([
                     }
                 }
             },
-            // createdDate:
+            createdDate: moment().subtract(25, 'minutes').toISOString(),
             content: {
                 body: "My view this morning is simply beautiful... instagram.com/p/mV0PUrHRwQ/",
                 links: {
@@ -139,7 +141,7 @@ define([
                     }
                 }
             },
-            // createdDate:
+            createdDate: moment().subtract(50, 'minutes').toISOString(),
             content: {
                 body: "8 Apps to Turn Your Pipe Dreams Into Prototypes on.mash.to/1oubyu8",
                 links: {
@@ -164,7 +166,7 @@ define([
                     }
                 }
             },
-            // createdDate:
+            createdDate: moment().subtract(1, 'hours').toISOString(),
             content: {
                 body: "How to get animations out of your head. http://bit.ly/1q7BngO  Funny and useful.",
                 links: {
@@ -189,7 +191,7 @@ define([
                     }
                 }
             },
-            // createdDate:
+            createdDate: moment().subtract(1, 'hours').toISOString(),
             content: {
                 body: "You have to see this bike. It will make your daily commute a absolute joy ride! vimeo.com/p/mV0PUrHRwQ/",
                 links: {
@@ -225,7 +227,7 @@ define([
                     }
                 }
             },
-            // createdDate:
+            createdDate: moment().subtract(3, 'minutes').toISOString(),
             content: {
                 body: "Need some reading? 11 free ebooks for designers | Creative Bloq bit.ly/1lE5QDM via @netmag",
                 links: {
@@ -251,7 +253,7 @@ define([
                     }
                 }
             },
-            // createdDate:
+            createdDate: moment().subtract(25, 'minutes').toISOString(),
             content: {
                 body: "Perfect day to be outside taking pictures instagram.com/p/mV0PUrHRwQ/",
                 links: {
@@ -287,7 +289,7 @@ define([
                     }
                 }
             },
-            // createdDate:
+            createdDate: moment().subtract(1, 'hours').toISOString(),
             content: {
                 body: "Awesome! Check this out. instagram.com/p/mV0PUrHRwQ/",
                 links: {
