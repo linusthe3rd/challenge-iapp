@@ -13,6 +13,10 @@ define([
     var DOM_DATA_KEY = "masonry-binding-instance";
 
     var getMasonryInstance = function (element) {
+        if (!element) {
+            return undefined;
+        }
+
         return ko.utils.domData.get(element, DOM_DATA_KEY);
     };
 
@@ -43,8 +47,6 @@ define([
                     layoutMasonry($parentNode);
                 }, 0);
             });
-
-            return { controlsDescendantBindings: true };
         },
         update: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
             ko.unwrap(valueAccessor());
