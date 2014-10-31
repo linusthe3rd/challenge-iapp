@@ -25,10 +25,14 @@
 
 input[type="checkbox"],
 input[type="radio"] {
-    position: absolute;
-    z-index: 0;
+    // Makes the radio buttons and checkboxes invisible so they can still get focus for
+    // interaction, but are not seen alongside the custom forms.
     filter: alpha(opacity=0);
     opacity: 0;
+    position: absolute;
+    z-index: @z-index-floor;
+
+
 
     &:focus {
         outline: none;
