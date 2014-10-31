@@ -36,6 +36,16 @@ define([
         });
 
         // ===============================================================================
+        // Private Methods
+        // ===============================================================================
+
+        var setMediaSizeOnPostViews = function (sizeName) {
+            _.each(self.postViews(), function (view) {
+                view.mediaSize(sizeName);
+            });
+        };
+
+        // ===============================================================================
         // Event Callbacks
         // ===============================================================================
 
@@ -52,10 +62,12 @@ define([
         };
 
         self.displayListLayout = function () {
+            setMediaSizeOnPostViews("medium");
             self.selectedLayout("l-list");
         };
 
         self.displayGridLayout = function () {
+            setMediaSizeOnPostViews("small");
             self.selectedLayout("l-grid");
         };
 

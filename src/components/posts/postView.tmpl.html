@@ -1,5 +1,3 @@
-
-
 <div class="post-content" data-bind="
     css: {
         'is-displaying-extra-content': postModel().hasMedia,
@@ -22,6 +20,7 @@
                         <!-- /ko -->
                     <!-- /ko -->
 
+                    <!-- ko if: mediaSize() == "medium" -->
                     <img alt="" data-bind="
                         attr: {
                             src: postModel().data().media.content.uri
@@ -32,6 +31,15 @@
                             width: postModel().data().media.content.width
                         }
                     ">
+                    <!-- /ko -->
+
+                    <!-- ko if: mediaSize() == "small" -->
+                    <img alt="" data-bind="
+                        attr: {
+                            src: postModel().data().media.content.uri
+                        }
+                    ">
+                    <!-- /ko -->
                 </div>
             </button>
         </div>

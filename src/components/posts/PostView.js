@@ -28,6 +28,8 @@ define([
             return self.postModel().hasReplies() && isDisplayingReplies();
         });
 
+        self.mediaSize = ko.observable("medium");
+
         self.replyPostViews = ko.computed(function () {
             // Look at the replies attached to the Post instance and convert them into
             // PostView instances so they can be rendered easily.
