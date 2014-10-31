@@ -1,11 +1,13 @@
 define([
     'knockout',
     'lodash',
-    'jquery'
+    'jquery',
+    'components/keyboard/keyCode'
 ], function (
     ko,
     _,
-    $
+    $,
+    keyCode
 ) {
     'use strict';
 
@@ -96,6 +98,14 @@ define([
                 }
             });
 
+            $element.on('keyup' + EVENT_NAMESPACE, function (event) {
+                if (event.keyCode !== keyCode.ESCAPE) {
+                    return;
+                }
+
+                $element.removeClass(IS_MODAL_SHOWN_STATE_CLASS);
+            });
+
             //
             // Cleanup
             //
@@ -103,9 +113,6 @@ define([
             ko.utils.domNodeDisposal.addDisposeCallback(element, function () {
                 $element.off(EVENT_NAMESPACE);
             });
-        },
-        update: function () {
-
         }
     };
 });
