@@ -58,9 +58,31 @@ define([
             });
         };
 
+        var loadPostsForFilter = function (filter) {
+            self.isLoading(true);
+
+            postsService.getPosts(filter)
+                .then(function (reponsePosts) {
+                    var postViews = _.map(reponsePosts, function (postModel) {
+                        return new PostView(postModel);
+                    });
+
+                    self.postViews(postViews);
+
+                    setMediaSizeOnPostViews();
+                })
+                .finally(function () {
+                    self.isLoading(false);
+                });
+        };
+
         // ===============================================================================
         // Event Callbacks
         // ===============================================================================
+
+        self.refresh = function () {
+            loadPostsForFilter(self.selectedFilter());
+        };
 
         self.displayAllPosts = function () {
             self.selectedFilter("all");
@@ -91,22 +113,7 @@ define([
         ko.computed(function () {
             // As the user changes the selected filter, we need to
             // reload the posts that are displayed with the selected filter.
-
-            self.isLoading(true);
-
-            postsService.getPosts(self.selectedFilter())
-                .then(function (reponsePosts) {
-                    var postViews = _.map(reponsePosts, function (postModel) {
-                        return new PostView(postModel);
-                    });
-
-                    self.postViews(postViews);
-
-                    setMediaSizeOnPostViews();
-                })
-                .finally(function () {
-                    self.isLoading(false);
-                });
+            loadPostsForFilter(self.selectedFilter());
         });
     };
 });

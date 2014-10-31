@@ -1,9 +1,11 @@
 define([
+    'lodash',
     'knockout',
 
     'components/posts/postsService',
     'components/user/userService'
 ], function (
+    _,
     ko,
 
     postsService,
@@ -32,6 +34,10 @@ define([
                 }
             }).then(function () {
                 self.newPostContent("");
+            }).finally(function () {
+                if (_.has(self.currentView(), "refresh")) {
+                    self.currentView().refresh();
+                }
             });
         };
     };
