@@ -54,6 +54,9 @@
     <ul class="post-replies list-unstyled">
         <!-- ko foreach: replyPostViews() -->
         <li class="reply">
+            <!-- ko template: 'components/posts/post-actions'-->
+            <!-- /ko -->
+
             <!-- ko template: 'components/posts/post-content'-->
             <!-- /ko -->
         </li>
