@@ -25,7 +25,16 @@
 
 input[type="checkbox"],
 input[type="radio"] {
-    display: none; // hide the native buttons since they will be replaced
+    position: absolute;
+    z-index: 0;
+    filter: alpha(opacity=0);
+    opacity: 0;
+
+    &:focus {
+        outline: none;
+    }
+
+    // display: none; // hide the native buttons since they will be replaced
 
     & + label {
         cursor: pointer;
@@ -45,8 +54,8 @@ input[type="radio"] {
         width: @container-size;
     }
 
-    & + label .checkbox:focus,
-    & + label .radio:focus {
+    &:focus + label .checkbox,
+    &:focus + label .radio {
         outline: none;
         box-shadow: 0 0 3px 3px #7dadd9;
     }
