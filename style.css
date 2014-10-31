@@ -996,6 +996,7 @@ input[type="radio"]:checked + label .radio:before {
   border: none;
   height: 75%;
   margin-bottom: -4px;
+  max-height: 582px;
 }
 .media-detail-post .post-media img {
   border-radius: 4px 4px 0 0;
@@ -1009,6 +1010,18 @@ input[type="radio"]:checked + label .radio:before {
 }
 .media-detail-post .post-content .media {
   border: none;
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+  .media-detail-post .post-media {
+    height: auto;
+    max-height: none;
+    max-width: 600px;
+    width: 80%;
+  }
+  .media-detail-post .post-media img {
+    max-height: none;
+    max-width: 600px;
+  }
 }
 .post-sm .media-detail-post .avatar img {
   position: absolute;
